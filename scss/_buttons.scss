@@ -1,0 +1,103 @@
+// «Обсудить проект» — светлая и тёмная (btn)
+.btn-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 281px;
+  max-width: 100%;
+  padding: 12px 30px 14px;
+  border: 1px solid $c-white;
+  border-radius: 8px;
+  background: $grad-light;
+  color: $c-brown;
+  font-family: $ff-text;
+  @include font(14, 1.4);
+  letter-spacing: var(--txt-ls);
+  text-align: left;
+  white-space: nowrap;
+  transition: box-shadow 0.3s $ease;
+
+  &__icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    @include icon-mask("../img/icons/arrow-18.svg");
+  }
+
+  @include hover {
+    box-shadow: 0 4px 6px -4px rgba(96, 55, 43, 0.2), 0 10px 15px -3px rgba(96, 55, 43, 0.2);
+  }
+
+  // На светлом фоне страницы — с тёмной рамкой
+  &--bordered {
+    border-color: $c-orange;
+  }
+
+  &--dark {
+    border-color: $c-orange;
+    background: $grad-dark;
+    color: $c-white;
+
+    @include hover {
+      box-shadow: 0 4px 6px -4px rgba(96, 55, 43, 0.3), 0 10px 15px -3px rgba(96, 55, 43, 0.3);
+    }
+  }
+}
+
+// «Смотреть портфолио» / «Бесплатная консультация» (btn_2)
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  height: 50px;
+  padding: 12px 30px 16px;
+  border: 1px solid $c-white;
+  border-radius: 8px;
+  background: $grad-glass;
+  box-shadow: 0 4px 6px -1px rgba(173, 173, 173, 0.05);
+  color: $c-white;
+  font-family: $ff-text;
+  @include font(14, 1.4);
+  letter-spacing: var(--txt-ls);
+  white-space: nowrap;
+  transition: box-shadow 0.3s $ease;
+
+  @include hover {
+    box-shadow: 0 4px 6px -1px rgba(96, 55, 43, 0.2);
+  }
+
+  &--dark {
+    border-color: $c-orange;
+    color: $c-brown;
+  }
+}
+
+// «Подробнее →» (btn_3)
+.link-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 2px 0;
+  border-bottom: 1px solid $c-brown;
+  color: $c-brown;
+  @include font(14, 1.4);
+  letter-spacing: var(--txt-ls);
+  white-space: nowrap;
+  transition: color 0.3s $ease, border-color 0.3s $ease;
+
+  &__icon {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    @include icon-mask("../img/icons/arrow-12.svg");
+  }
+
+  @include hover {
+    color: $c-soft;
+    border-color: $c-soft;
+  }
+
+  &--sm {
+    font-size: 12px;
+    line-height: normal;
+  }
+}

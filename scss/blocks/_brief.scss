@@ -1,0 +1,84 @@
+// Начало страницы (яхты, партнёры): заголовок, лид с двумя текстами и два фото.
+// Страница яхт на 360 — с отступами 480 (так в макете): здесь и в .audience--compact, .scope, .why
+.brief {
+  &__title {
+    margin-top: 20px;
+
+    @include up(xl) {
+      max-width: 1111px;
+    }
+  }
+
+  // Лид над текстами; с 1280 — лид слева, тексты с колонки offset-4
+  &__intro {
+    display: grid;
+    align-items: start;
+    gap: 40px;
+    margin-top: 60px;
+
+    @include up(md) {
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      grid-template-columns: 386px 1fr;
+      column-gap: 30px;
+      margin-top: 100px;
+    }
+  }
+
+  &__lead {
+    @include h3;
+
+    @include only(md) {
+      max-width: 586px;
+    }
+
+    @include up(xl) {
+      max-width: 358px;
+    }
+  }
+
+  &__texts {
+    display: grid;
+    align-items: start;
+    gap: 30px;
+
+    @include up(md) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include up(xl) {
+      grid-template-columns: 282px 401px;
+    }
+  }
+
+  &__photos {
+    display: grid;
+    gap: 22px;
+    margin-top: 60px;
+
+    @include up(sm) {
+      gap: 30px;
+    }
+
+    @include up(md) {
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      gap: 22px;
+    }
+
+    @include up(xl) {
+      gap: 30px;
+      margin-top: 100px;
+    }
+  }
+
+  &__photo {
+    @include img-cover(594, 762);
+  }
+}

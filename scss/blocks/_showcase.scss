@@ -1,0 +1,104 @@
+// «Портфолио»: заголовок, лид с текстом и два фото от левого края экрана
+.showcase {
+  // На 360 в макете шапка выше (60), на 480 заголовок ближе к крошкам (20)
+  @include only(xs) {
+    padding-top: 60px;
+  }
+
+  &__title {
+    @include only(sm) {
+      margin-top: 20px;
+    }
+
+    @include only(md) {
+      max-width: 697px;
+    }
+  }
+
+  &__intro {
+    display: grid;
+    gap: 30px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      margin-top: 80px;
+    }
+
+    // Лид — col-7, текст — col-offset-7
+    @include up(xl) {
+      grid-template-columns: 698px 386px;
+      margin-top: 100px;
+    }
+  }
+
+  &__lead {
+    @include h3;
+  }
+
+  // Широкое 4:3 и узкое 3:4 фото одной высоты
+  &__photos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 40px 0 0 -20px;
+
+    @include up(sm) {
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 13px;
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      gap: 17px;
+    }
+
+    // Широкое фото — до конца col-7, узкое — с col-8
+    @include up(xl) {
+      --wide: calc(698px + (100vw - #{$container}) / 2);
+      gap: 30px;
+      margin-top: 100px;
+      margin-left: calc((#{$container} - 100vw) / 2);
+    }
+  }
+
+  &__wide {
+    @include img-cover(4, 3);
+
+    @include up(md) {
+      flex: 16 1 0;
+    }
+
+    @include up(xl) {
+      flex: none;
+      width: var(--wide);
+    }
+  }
+
+  &__tall {
+    align-self: flex-end;
+    width: pct(215, 460);
+    @include img-cover(3, 4);
+
+    @include up(md) {
+      flex: 9 1 0;
+      align-self: auto;
+    }
+
+    @include up(xl) {
+      flex: none;
+      width: calc(var(--wide) * 9 / 16);
+    }
+  }
+}

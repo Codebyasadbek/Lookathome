@@ -1,0 +1,89 @@
+// «Интерьеры яхт»: почему это удобно — фото, условия и текст с кнопкой
+.why {
+  @include only(xs) {
+    padding-top: 80px;
+  }
+
+  & + .cta {
+    @include only(xs) {
+      margin-top: 80px;
+    }
+  }
+
+  // Две строки одинаковой длины, как в макете
+  .section-head__title {
+    @include only(lg) {
+      text-wrap: balance;
+    }
+  }
+
+  &__body {
+    display: grid;
+    margin-top: 60px;
+
+    // Колонка заголовка: фото, под ним условия и текст
+    @include only(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px 11px;
+      margin-top: 80px;
+      margin-left: map-get($label-col-width, md);
+    }
+
+    @include up(lg) {
+      grid-template-columns: pct(317, 920) pct(237, 920) pct(317, 920);
+      justify-content: space-between;
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      grid-template-columns: 386px 287px 390px;
+      justify-content: start;
+      column-gap: 30px;
+      margin-top: 100px;
+    }
+  }
+
+  &__photo {
+    align-self: start;
+    @include img-cover(2, 3);
+
+    @include only(md) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__facts {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      margin-top: 0;
+    }
+  }
+
+  // Текст сверху, кнопка — по нижнему краю условий
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 40px;
+
+    @include up(md) {
+      margin-top: 0;
+    }
+  }
+
+  &__btn {
+    @include down(md) {
+      width: 100%;
+    }
+  }
+}

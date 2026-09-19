@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Модули страницы проекта — Мари Воти, декоратор интерьера</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&family=Tenor+Sans&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header header--solid">
+    <div class="container header__inner">
+      <button class="header__burger" type="button" aria-label="Открыть меню" data-menu-open>
+        <img src="img/icons/menu.svg" alt="">
+      </button>
+
+      <nav class="header__nav" aria-label="Основное меню">
+        <a class="header__link" href="index.html">Главная</a>
+        <a class="header__link" href="about.html">Обо мне</a>
+        <a class="header__link" href="services.html">Услуги</a>
+        <a class="header__link" href="study.html">Обучение</a>
+        <a class="header__link" href="portfolio.html">Портфолио</a>
+        <a class="header__link" href="partners.html">Партнёры</a>
+      </nav>
+
+      <div class="header__right">
+        <a class="header__phone" href="tel:+79776650507">+7 977 665-05-07</a>
+        <button class="btn-ghost header__btn" type="button" data-modal-open="request">Бесплатная консультация</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="menu__overlay" data-menu-close></div>
+  <div class="menu" id="menu" aria-hidden="true">
+    <button class="menu__close" type="button" aria-label="Закрыть меню" data-menu-close>
+      <img src="img/icons/close.svg" alt="">
+    </button>
+    <nav class="menu__nav" aria-label="Мобильное меню">
+      <a class="menu__link" href="index.html">Главная</a>
+      <a class="menu__link" href="about.html">Обо мне</a>
+      <a class="menu__link" href="services.html">Услуги</a>
+      <a class="menu__link" href="study.html">Обучение</a>
+      <a class="menu__link" href="portfolio.html">Портфолио</a>
+      <a class="menu__link" href="partners.html">Партнёры</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- Каталог модулей страницы проекта: фото — заглушки с пропорциями из макета, src/width/height задаёт CMS -->
+
+    <!-- Модуль «head landscape» -->
+    <section class="page-head case">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+          <ol class="breadcrumbs__list">
+            <li class="breadcrumbs__item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumbs__item"><a href="portfolio.html">Портфолио</a></li>
+            <li class="breadcrumbs__item" aria-current="page">Экспозиционная зона B&amp;B Italia</li>
+          </ol>
+        </nav>
+
+        <h1 class="page-head__title case__title">Экспозиционная зона B&amp;B Italia</h1>
+        <p class="case__meta">Москва · ТРИО-Интерьер · B&amp;B Italia<br> Коммерческий интерьер · шоурум · декорирование · комплектация · стилизация</p>
+
+        <div class="case__media">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1218 800'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="1218" height="800">
+        </div>
+
+        <div class="case__texts">
+          <p class="case__lead">Задачей было создать выразительную и&nbsp;цельную композицию, которая демонстрирует мебель и&nbsp;предметы бренда в&nbsp;контексте современного интерьера.</p>
+          <div class="text">
+            <p>Проект создан совместно с&nbsp;командой ТРИО-Интерьер в&nbsp;рамках оформления экспозиции B&amp;B Italia в&nbsp;шоуруме на&nbsp;Кутузовском проспекте в&nbsp;Москве.</p>
+            <p>Эта&nbsp;зона является частью экспозиции B&amp;B Italia в&nbsp;шоуруме ТРИО&nbsp;— Интерьер в&nbsp;Москве.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Модуль «head portrait» (на странице проекта заголовок — h1) -->
+    <section class="page-head case case--portrait">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+          <ol class="breadcrumbs__list">
+            <li class="breadcrumbs__item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumbs__item"><a href="portfolio.html">Портфолио</a></li>
+            <li class="breadcrumbs__item" aria-current="page">Экспозиционная зона B&amp;B Italia</li>
+          </ol>
+        </nav>
+
+        <h2 class="page-head__title case__title">Экспозиционная зона B&amp;B Italia</h2>
+        <p class="case__meta">Москва · шоу-рум Dantone Home, Серебряническая набережная<br> Декорирование интерьера · комплектация · подбор мебели · подбор тканей · текстиль · декор · свет · постеры · озеленение · финальный стайлинг</p>
+
+        <div class="case__media">
+          <div class="video" data-video>
+            <video preload="none" playsinline></video>
+            <button class="video__play" type="button" aria-label="Смотреть видео" data-video-play></button>
+          </div>
+        </div>
+
+        <div class="case__texts">
+          <p class="case__lead">Проект создан совместно с&nbsp;командой ТРИО-Интерьер в&nbsp;рамках оформления экспозиции B&amp;B Italia в&nbsp;шоуруме на&nbsp;Кутузовском проспекте в&nbsp;Москве</p>
+          <p>Спальная зона построена как&nbsp;цельная интерьерная композиция, где&nbsp;мебель, текстиль, освещение, искусство и&nbsp;декоративные детали работают вместе и&nbsp;формируют единый образ пространства.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Модуль «txt» -->
+    <section class="section">
+      <div class="container case-note">
+        <p class="case-note__label">Моя&nbsp;роль</p>
+        <div class="case-note__text"><p>В&nbsp;рамках совместного проекта я&nbsp;отвечала за&nbsp;декорирование и&nbsp;комплектацию зоны, а&nbsp;также&nbsp;сопровождала реализацию&nbsp;— от&nbsp;подбора предметов и&nbsp;текстиля до&nbsp;установки и&nbsp;финальной стилизации.</p><p>Особое внимание уделила текстильному оформлению спальни: сочетанию фактур, оттенков и&nbsp;декоративных деталей.</p></div>
+      </div>
+    </section>
+
+    <!-- Модуль «video» -->
+    <section class="section">
+      <div class="container shots shots--video">
+        <div class="video" data-video>
+            <video preload="none" playsinline></video>
+            <button class="video__play" type="button" aria-label="Смотреть видео" data-video-play></button>
+          </div>
+      </div>
+    </section>
+
+    <!-- Модуль «portrait 4+8» -->
+    <section class="section">
+      <div class="container shots shots--portrait-4-8">
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 386 580'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="386" height="580"></div>
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 802 1070'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="802" height="1070"></div>
+      </div>
+    </section>
+
+    <!-- Модуль «landscape/portrait 4+8» -->
+    <section class="section">
+      <div class="container shots shots--mixed-4-8">
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 386 556'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="386" height="556"></div>
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 801 556'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="801" height="556"></div>
+      </div>
+    </section>
+
+    <!-- Модуль «portrait 6+6» -->
+    <section class="section">
+      <div class="container shots shots--portrait-6-6">
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 594 792'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="594" height="792"></div>
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 594 792'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="594" height="792"></div>
+      </div>
+    </section>
+
+    <!-- Модуль «portrait 7+5» -->
+    <section class="section">
+      <div class="container shots shots--portrait-7-5">
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 698 872'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="698" height="872"></div>
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 490 612'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="490" height="612"></div>
+      </div>
+    </section>
+
+    <!-- Модуль «landscape 4+8» -->
+    <section class="section">
+      <div class="container shots shots--landscape-4-8">
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 386 290'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="386" height="290"></div>
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 802 602'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="802" height="602"></div>
+      </div>
+    </section>
+
+    <!-- Модуль «landscape 7+5» -->
+    <section class="section">
+      <div class="container shots shots--landscape-7-5">
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 698 524'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="698" height="524"></div>
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 490 327'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="490" height="327"></div>
+      </div>
+    </section>
+
+    <!-- Модуль «landscape 12» -->
+    <section class="section">
+      <div class="container shots shots--landscape-12">
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1218 913'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="1218" height="913"></div>
+      </div>
+    </section>
+
+    <!-- Модуль «portrait 8» -->
+    <section class="section">
+      <div class="container shots shots--portrait-8">
+        <div class="shots__photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 16'%3E%3Crect width='100%25' height='100%25' fill='%23d3c2af'/%3E%3C/svg%3E" alt="" width="9" height="16"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <nav class="footer__nav" aria-label="Меню в подвале">
+        <a class="footer__link" href="index.html">Главная</a>
+        <a class="footer__link" href="about.html">Обо мне</a>
+        <a class="footer__link" href="services.html">Услуги</a>
+        <a class="footer__link" href="study.html">Обучение</a>
+        <a class="footer__link" href="portfolio.html">Портфолио</a>
+      </nav>
+
+      <div class="footer__contacts">
+        <a class="footer__link" href="mailto:marivoti777@gmail.com">marivoti777@gmail.com</a>
+        <a class="footer__link" href="tel:+79776650507">+7 977 665-05-07</a>
+      </div>
+
+      <div class="footer__socials">
+        <a class="footer__link" href="#" target="_blank" rel="noopener">Pinterest</a>
+        <a class="footer__link" href="#" target="_blank" rel="noopener">Написать в&nbsp;MAX</a>
+      </div>
+
+      <div class="footer__legal">
+        <a class="footer__link footer__link--accent" href="#">Политика конфиденциальности</a>
+        <a class="footer__link footer__link--accent" href="#">Согласие на обработку персональных данных</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Modal: request -->
+<div class="modal" id="modal-request" aria-hidden="true" data-modal>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-request-title">
+    <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+    <div class="modal__img">
+      <img src="img/main/modal.jpg" alt="" loading="lazy">
+    </div>
+
+    <form class="modal__form" action="#" method="post" novalidate data-request-form>
+      <h2 class="modal__title" id="modal-request-title">Оставить заявку</h2>
+
+      <div class="modal__fields">
+        <label class="field">
+          <span class="field__label">Имя</span>
+          <span class="field__wrap">
+            <input class="field__input" type="text" name="name" autocomplete="name" required>
+            <img class="field__alert" src="img/icons/alert.svg" alt="">
+          </span>
+        </label>
+        <label class="field">
+          <span class="field__label">Телефон</span>
+          <span class="field__wrap">
+            <input class="field__input" type="tel" name="phone" placeholder="+7 (000) 000–00–00" autocomplete="tel" required data-phone-mask>
+            <img class="field__alert" src="img/icons/alert.svg" alt="">
+          </span>
+        </label>
+      </div>
+
+      <div class="modal__submit">
+        <button class="btn-main btn-main--dark" type="submit">
+          Отправить
+          <span class="btn-main__icon"></span>
+        </button>
+        <label class="consent">
+          <input type="checkbox" name="agree" required>
+          <span class="consent__box"></span>
+          <span>Оставляя заявку вы соглашаетесь с <a href="#">политикой конфиденциальности</a></span>
+        </label>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: thanks -->
+<div class="modal" id="modal-thanks" aria-hidden="true" data-modal>
+  <div class="modal__dialog modal__dialog--thanks" role="dialog" aria-modal="true" aria-labelledby="modal-thanks-title">
+    <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+    <h2 class="modal__title" id="modal-thanks-title">Благодарю за заявку!</h2>
+    <p class="modal__text">Скоро свяжусь, чтобы обсудить ваш проект</p>
+    <a class="modal__home btn-main btn-main--dark" href="index.html">
+      На главную
+      <span class="btn-main__icon"></span>
+    </a>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

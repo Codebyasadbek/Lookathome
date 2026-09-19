@@ -1,0 +1,113 @@
+// «Обо мне»: первый экран — фото и два текстовых блока (под .page-head)
+.intro {
+  // Шапка по макету: 60 на 360, 80 на 960
+  @include only(xs) {
+    padding-top: 60px;
+  }
+
+  @include only(lg) {
+    padding-top: 80px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    @include up(xl) {
+      margin-top: 100px;
+    }
+  }
+
+  &__photo {
+    @include img-cover(440, 554);
+
+    @include up(lg) {
+      flex: 0 0 pct(448, 920);
+      aspect-ratio: 448 / 668;
+    }
+
+    @include up(xl) {
+      flex-basis: 620px;
+      aspect-ratio: 620 / 780;
+    }
+  }
+
+  // 768: блоки в две колонки под фото; 960+: колонкой справа от фото
+  &__content {
+    margin-top: 40px;
+
+    @include up(md) {
+      display: flex;
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    @include up(lg) {
+      display: block;
+      flex: 0 0 pct(455, 920);
+      margin: 0 0 0 auto;
+    }
+
+    @include up(xl) {
+      flex-basis: 386px;
+      margin-right: 104px; // col-4 с отступом в одну колонку от правого края
+    }
+  }
+
+  &__block {
+    @include up(md) {
+      flex: 1 1 0;
+    }
+
+    & + & {
+      margin-top: 20px;
+
+      @include up(md) {
+        margin-top: 0;
+      }
+
+      @include up(lg) {
+        margin-top: 20px;
+      }
+
+      @include up(xl) {
+        margin-top: 60px;
+      }
+    }
+  }
+
+  &__subtitle {
+    @include h3;
+
+    // В макете блок заголовка уже колонки
+    &--narrow {
+      max-width: 387px;
+    }
+  }
+
+  &__text {
+    margin-top: 30px;
+
+    @include up(md) {
+      margin-top: 40px;
+    }
+
+    @include up(lg) {
+      max-width: 444px;
+    }
+  }
+}

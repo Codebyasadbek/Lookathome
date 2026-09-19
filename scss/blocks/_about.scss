@@ -1,0 +1,229 @@
+.about {
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      flex-direction: row;
+      gap: 30px;
+    }
+
+    // 1920: две строки — [фото | тексты], [цитата | большое фото]
+    @include up(xl) {
+      display: grid;
+      grid-template-columns: 698px 1fr;
+      grid-template-areas:
+        "photo texts"
+        "aside big";
+      gap: 100px 28px;
+      margin-top: 100px;
+    }
+  }
+
+  // < 960: колонки «растворяются», порядок задаётся order
+  &__col {
+    display: contents;
+
+    @include up(lg) {
+      display: flex;
+      flex-direction: column;
+
+      &--left {
+        flex: 0 0 auto;
+        width: pct(455, 920);
+      }
+
+      &--right {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+    }
+
+    @include up(xl) {
+      display: contents;
+    }
+  }
+
+  &__photo {
+    order: 1;
+    grid-area: photo;
+    @include img-cover(698, 950);
+  }
+
+  &__texts {
+    order: 2;
+    grid-area: texts;
+    margin-top: 30px;
+
+    @include up(sm) {
+      margin-top: 40px;
+    }
+
+    @include up(md) {
+      display: flex;
+      gap: 30px;
+    }
+
+    @include up(lg) {
+      display: block;
+      margin-top: 0;
+    }
+
+    @include up(xl) {
+      padding-top: 47px;
+    }
+  }
+
+  &__text {
+    @include up(md) {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    & + & {
+      margin-top: 40px;
+
+      @include up(md) {
+        margin-top: 0;
+      }
+
+      @include up(lg) {
+        margin-top: 60px;
+      }
+    }
+
+    h3 {
+      @include h3;
+    }
+
+    .text {
+      margin-top: 30px;
+
+      @include up(md) {
+        margin-top: 40px;
+      }
+    }
+
+    &--1 {
+      .text {
+        @include up(sm) {
+          max-width: 391px;
+        }
+
+        @include up(md) {
+          max-width: 310px;
+        }
+
+        @include up(lg) {
+          max-width: 341px;
+        }
+      }
+
+      @include up(lg) {
+        max-width: 383px;
+      }
+    }
+
+    &--2 {
+      @include up(lg) {
+        max-width: 338px;
+
+        h3 {
+          max-width: 320px;
+        }
+      }
+    }
+  }
+
+  &__big {
+    order: 3;
+    grid-area: big;
+    margin-top: 40px;
+    @include img-cover(728, 527);
+
+    @include up(lg) {
+      aspect-ratio: auto;
+      height: 351px;
+      margin: auto -20px 0;
+    }
+
+    @include up(xl) {
+      height: 760px;
+      margin-top: 0;
+      margin-left: -206px;
+      margin-right: calc((#{$container} - 100vw) / 2);
+    }
+  }
+
+  &__aside {
+    order: 4;
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include up(lg) {
+      margin-top: 40px;
+    }
+
+    @include up(xl) {
+      width: 488px;
+      margin-top: 0;
+      padding-top: 32px;
+    }
+  }
+
+  &__quote {
+    max-width: 321px;
+    margin-top: 40px;
+    @include h3;
+
+    @include up(sm) {
+      max-width: 440px;
+      margin-top: 100px;
+    }
+
+    @include up(md) {
+      max-width: 380px;
+      margin-top: 50px;
+    }
+
+    @include up(lg) {
+      max-width: 296px;
+      margin-top: 0;
+    }
+  }
+
+  &__small {
+    width: 227px;
+    margin-top: 30px;
+    @include img-cover(227, 420);
+
+    @include up(md) {
+      margin-top: 40px;
+    }
+
+    @include up(lg) {
+      width: 284px;
+      aspect-ratio: 284 / 420;
+    }
+  }
+
+  &__link {
+    margin-top: 30px;
+
+    @include up(sm) {
+      margin-top: 40px;
+    }
+  }
+}

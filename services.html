@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Услуги — Мари Воти, декоратор интерьера</title>
+  <meta name="description" content="Декорирование и полная комплектация интерьеров: жилые и коммерческие пространства, интерьеры яхт и обучение декораторов. Весь путь от идеи до финальной детали.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&family=Tenor+Sans&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header header--solid">
+    <div class="container header__inner">
+      <button class="header__burger" type="button" aria-label="Открыть меню" data-menu-open>
+        <img src="img/icons/menu.svg" alt="">
+      </button>
+
+      <nav class="header__nav" aria-label="Основное меню">
+        <a class="header__link" href="index.html">Главная</a>
+        <a class="header__link" href="about.html">Обо мне</a>
+        <a class="header__link" href="services.html">Услуги</a>
+        <a class="header__link" href="study.html">Обучение</a>
+        <a class="header__link" href="portfolio.html">Портфолио</a>
+        <a class="header__link" href="partners.html">Партнёры</a>
+      </nav>
+
+      <div class="header__right">
+        <a class="header__phone" href="tel:+79776650507">+7 977 665-05-07</a>
+        <button class="btn-ghost header__btn" type="button" data-modal-open="request">Бесплатная консультация</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="menu__overlay" data-menu-close></div>
+  <div class="menu" id="menu" aria-hidden="true">
+    <button class="menu__close" type="button" aria-label="Закрыть меню" data-menu-close>
+      <img src="img/icons/close.svg" alt="">
+    </button>
+    <nav class="menu__nav" aria-label="Мобильное меню">
+      <a class="menu__link" href="index.html">Главная</a>
+      <a class="menu__link" href="about.html">Обо мне</a>
+      <a class="menu__link" href="services.html">Услуги</a>
+      <a class="menu__link" href="study.html">Обучение</a>
+      <a class="menu__link" href="portfolio.html">Портфолио</a>
+      <a class="menu__link" href="partners.html">Партнёры</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- 1. Head -->
+    <section class="page-head overview">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+          <ol class="breadcrumbs__list">
+            <li class="breadcrumbs__item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumbs__item" aria-current="page">Услуги</li>
+          </ol>
+        </nav>
+
+        <h1 class="page-head__title overview__title">Декорирование и&nbsp;полная комплектация интерьеров</h1>
+        <p class="overview__lead">Я&nbsp;беру на&nbsp;себя весь путь от&nbsp;первой идеи до&nbsp;финальной детали&nbsp;— чтобы&nbsp;вы&nbsp;не&nbsp;теряли время на&nbsp;подбор и&nbsp;коммуникацию с&nbsp;подрядчиками.</p>
+      </div>
+
+      <div class="overview__photo">
+        <img src="img/services/head.jpg" alt="">
+      </div>
+
+      <div class="container">
+        <div class="overview__cards">
+          <div class="benefit">
+            <h2 class="benefit__title">Готовый интерьер<br> без&nbsp;хаоса</h2>
+            <p class="benefit__text">Каждый интерьер создаётся как&nbsp;цельная композиция, где&nbsp;все&nbsp;элементы связаны между&nbsp;собой и&nbsp;работают на&nbsp;общую атмосферу.</p>
+          </div>
+          <div class="benefit">
+            <h2 class="benefit__title">Пространство, которое отражает ваш&nbsp;характер</h2>
+            <p class="benefit__text">Я&nbsp;не&nbsp;работаю по&nbsp;шаблонам: каждый проект строится вокруг ваших привычек, ритма жизни и&nbsp;атмосферы, которую вы&nbsp;хотите чувствовать дома</p>
+          </div>
+          <div class="benefit">
+            <h2 class="benefit__title">Реальный<br> результат</h2>
+            <p class="benefit__text">Концепция сразу учитывает бюджет, доступность позиций и&nbsp;реальные сроки&nbsp;— без&nbsp;красивых картинок, которые невозможно воплотить.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Directions -->
+    <section class="directions section section--taupe">
+      <div class="container">
+        <div class="row section-head">
+          <div class="col-12 section-head__label-col">
+            <p class="section-head__label">Мои услуги</p>
+          </div>
+          <div class="col section-head__title-col">
+            <h2 class="section-head__title">Создаю интерьеры для&nbsp;квартир, домов, коммерческих пространств&nbsp;и&nbsp;яхт</h2>
+          </div>
+        </div>
+
+        <!-- Карточки выводятся в цикле -->
+        <div class="directions__list">
+          <article class="direction">
+            <div class="direction__body">
+              <p class="direction__num">01</p>
+              <div class="direction__photo">
+                <img src="img/services/residential.jpg" alt="" loading="lazy">
+              </div>
+              <h3 class="direction__title">Жилые интерьеры</h3>
+              <p class="direction__text">Декорирование и&nbsp;комплектация квартир и&nbsp;частных домов: создаю уютные, функциональные пространства, где&nbsp;всё&nbsp;продумано до&nbsp;мелочей</p>
+            </div>
+            <a class="direction__link link-more link-more--sm" href="interiors.html">Подробнее <span class="link-more__icon"></span></a>
+          </article>
+
+          <article class="direction">
+            <div class="direction__body">
+              <p class="direction__num">02</p>
+              <div class="direction__photo">
+                <img src="img/services/commercial.jpg" alt="" loading="lazy">
+              </div>
+              <h3 class="direction__title">Коммерческие интерьеры</h3>
+              <p class="direction__text">Оформление офисов, шоурумов, гостиниц, ресторанов и&nbsp;других общественных пространств: интерьер как&nbsp;часть бренда и&nbsp;инструмент привлечения клиентов</p>
+            </div>
+            <a class="direction__link link-more link-more--sm" href="commercial.html">Подробнее <span class="link-more__icon"></span></a>
+          </article>
+
+          <article class="direction">
+            <div class="direction__body">
+              <p class="direction__num">03</p>
+              <div class="direction__photo">
+                <img src="img/services/yacht.jpg" alt="" loading="lazy">
+              </div>
+              <h3 class="direction__title">Интерьеры яхт</h3>
+              <p class="direction__text">Декорирование с&nbsp;учётом архитектуры и&nbsp;эргономики: компактные пространства, где&nbsp;каждая деталь работает на&nbsp;комфорт и&nbsp;эстетику</p>
+            </div>
+            <a class="direction__link link-more link-more--sm" href="yacht.html">Подробнее <span class="link-more__icon"></span></a>
+          </article>
+
+          <article class="direction">
+            <div class="direction__body">
+              <p class="direction__num">04</p>
+              <div class="direction__photo">
+                <img src="img/services/study.jpg" alt="" loading="lazy">
+              </div>
+              <h3 class="direction__title">Обучение</h3>
+              <p class="direction__text">Индивидуальные консультации и&nbsp;обучение для&nbsp;начинающих и&nbsp;практикующих декораторов: делюсь реальным опытом и&nbsp;рабочими инструментами</p>
+            </div>
+            <a class="direction__link link-more link-more--sm" href="study.html">Подробнее <span class="link-more__icon"></span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CTA -->
+    <section class="cta cta--text">
+      <div class="cta__bg">
+        <img src="img/services/cta-bg.jpg" alt="" loading="lazy">
+      </div>
+      <div class="container cta__container">
+        <h2 class="cta__title">Каждый проект начинается с&nbsp;понимания пространства и&nbsp;ваших задач</h2>
+        <p class="cta__text">В&nbsp;результате вы&nbsp;получите интерьер, который выглядит естественно, остаётся актуальным и&nbsp;полностью готов к&nbsp;реализации.</p>
+        <button class="cta__btn btn-main" type="button" data-modal-open="request">
+          Обсудить проект
+          <span class="btn-main__icon"></span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <nav class="footer__nav" aria-label="Меню в подвале">
+        <a class="footer__link" href="index.html">Главная</a>
+        <a class="footer__link" href="about.html">Обо мне</a>
+        <a class="footer__link" href="services.html">Услуги</a>
+        <a class="footer__link" href="study.html">Обучение</a>
+        <a class="footer__link" href="portfolio.html">Портфолио</a>
+      </nav>
+
+      <div class="footer__contacts">
+        <a class="footer__link" href="mailto:marivoti777@gmail.com">marivoti777@gmail.com</a>
+        <a class="footer__link" href="tel:+79776650507">+7 977 665-05-07</a>
+      </div>
+
+      <div class="footer__socials">
+        <a class="footer__link" href="#" target="_blank" rel="noopener">Pinterest</a>
+        <a class="footer__link" href="#" target="_blank" rel="noopener">Написать в&nbsp;MAX</a>
+      </div>
+
+      <div class="footer__legal">
+        <a class="footer__link footer__link--accent" href="#">Политика конфиденциальности</a>
+        <a class="footer__link footer__link--accent" href="#">Согласие на обработку персональных данных</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Modal: request -->
+<div class="modal" id="modal-request" aria-hidden="true" data-modal>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-request-title">
+    <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+    <div class="modal__img">
+      <img src="img/main/modal.jpg" alt="" loading="lazy">
+    </div>
+
+    <form class="modal__form" action="#" method="post" novalidate data-request-form>
+      <h2 class="modal__title" id="modal-request-title">Оставить заявку</h2>
+
+      <div class="modal__fields">
+        <label class="field">
+          <span class="field__label">Имя</span>
+          <span class="field__wrap">
+            <input class="field__input" type="text" name="name" autocomplete="name" required>
+            <img class="field__alert" src="img/icons/alert.svg" alt="">
+          </span>
+        </label>
+        <label class="field">
+          <span class="field__label">Телефон</span>
+          <span class="field__wrap">
+            <input class="field__input" type="tel" name="phone" placeholder="+7 (000) 000–00–00" autocomplete="tel" required data-phone-mask>
+            <img class="field__alert" src="img/icons/alert.svg" alt="">
+          </span>
+        </label>
+      </div>
+
+      <div class="modal__submit">
+        <button class="btn-main btn-main--dark" type="submit">
+          Отправить
+          <span class="btn-main__icon"></span>
+        </button>
+        <label class="consent">
+          <input type="checkbox" name="agree" required>
+          <span class="consent__box"></span>
+          <span>Оставляя заявку вы соглашаетесь с <a href="#">политикой конфиденциальности</a></span>
+        </label>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: thanks -->
+<div class="modal" id="modal-thanks" aria-hidden="true" data-modal>
+  <div class="modal__dialog modal__dialog--thanks" role="dialog" aria-modal="true" aria-labelledby="modal-thanks-title">
+    <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+    <h2 class="modal__title" id="modal-thanks-title">Благодарю за заявку!</h2>
+    <p class="modal__text">Скоро свяжусь, чтобы обсудить ваш проект</p>
+    <a class="modal__home btn-main btn-main--dark" href="index.html">
+      На главную
+      <span class="btn-main__icon"></span>
+    </a>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

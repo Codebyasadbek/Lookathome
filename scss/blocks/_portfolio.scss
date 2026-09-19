@@ -1,0 +1,106 @@
+.portfolio {
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+
+    .btn-main,
+    .btn-ghost {
+      width: 100%;
+    }
+
+    @include up(sm) {
+      flex-direction: row;
+      gap: 11px;
+
+      .btn-main {
+        width: 214px;
+      }
+
+      .btn-ghost {
+        width: 215px;
+      }
+    }
+
+    @include up(md) {
+      gap: 29px;
+      margin-top: 40px;
+
+      .btn-main {
+        width: 263px;
+      }
+
+      .btn-ghost {
+        justify-content: center;
+        width: 190px;
+        padding-inline: 20px;
+      }
+    }
+
+    @include up(lg) {
+      gap: 31px;
+
+      .btn-main {
+        width: 281px;
+      }
+
+      .btn-ghost {
+        width: auto;
+        padding-inline: 30px;
+      }
+    }
+
+    @include up(xl) {
+      margin-top: 60px;
+    }
+  }
+
+  &__slider {
+    margin-top: 30px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      margin-top: 77px;
+    }
+
+    @include up(lg) {
+      margin-top: 78px;
+    }
+
+    @include up(xl) {
+      margin-top: 98px;
+      margin-left: -15px;
+    }
+
+    .swiper-wrapper {
+      align-items: flex-start;
+    }
+  }
+
+  // Размеры по макету: каждый 4-й слайд из шести — высокий
+  &__slide {
+    width: 304px;
+    height: auto;
+    @include img-cover(304, 453);
+
+    @include up(sm) {
+      width: 282px;
+      aspect-ratio: 282 / 420;
+
+      &:nth-child(6n + 4) {
+        width: 386px;
+        aspect-ratio: 386 / 579;
+      }
+    }
+
+    img {
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+}

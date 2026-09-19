@@ -1,0 +1,146 @@
+// «Жилые интерьеры»: для кого — два списка и широкое фото
+.audience {
+  &__lists {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      flex-direction: row;
+      gap: 48px;
+      margin-top: 80px;
+    }
+
+    // Колонка заголовка .section-head
+    @include up(lg) {
+      gap: 47px;
+      margin-left: map-get($label-col-width, lg);
+    }
+
+    @include up(xl) {
+      gap: 104px;
+      margin-top: 100px;
+      margin-left: calc((100% + #{$grid-gutter-width}) / 3);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include up(sm) {
+      gap: 30px;
+    }
+
+    @include up(md) {
+      flex: 1 1 0;
+    }
+
+    @include up(lg) {
+      flex: 0 0 312px;
+    }
+  }
+
+  &__photo {
+    margin-top: 60px;
+    @include img-cover(20, 11);
+
+    img {
+      object-position: 50% 70%;
+    }
+
+    @include up(md) {
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      margin-top: 100px;
+      aspect-ratio: 1920 / 1160;
+    }
+  }
+
+  &--compact {
+    @include only(xs) {
+      margin-top: 80px;
+      padding: 80px 0;
+    }
+  }
+
+  // Списки шириной 312px: столбиком до 960, с 960 — в две колонки через 60px
+  &--compact &__lists {
+    gap: 30px;
+
+    @include only(xs) {
+      margin-top: 60px;
+    }
+
+    @include only(md) {
+      flex-direction: column;
+      margin-left: map-get($label-col-width, md);
+    }
+
+    @include up(lg) {
+      gap: 60px;
+    }
+  }
+
+  &--compact &__list {
+    flex: none;
+    gap: 30px;
+    width: 312px;
+    max-width: 100%;
+  }
+
+  // Короткие пункты: колонки 177 и 283px в строку с 480
+  &--inline .section-head__title {
+    @include up(xl) {
+      max-width: 742px;
+    }
+  }
+
+  &--inline &__lists {
+    gap: 30px;
+
+    @include up(sm) {
+      flex-direction: row;
+    }
+
+    @include only(md) {
+      margin-left: map-get($label-col-width, md);
+    }
+
+    // На 960 в макете от заголовка — 100
+    @include only(lg) {
+      margin-top: 100px;
+    }
+  }
+
+  &--inline &__list {
+    gap: 30px;
+
+    @include up(sm) {
+      flex: 0 1 283px;
+
+      &:first-child {
+        flex: 0 0 177px;
+      }
+    }
+  }
+
+  &--compact &__photo {
+    @include up(xl) {
+      aspect-ratio: 20 / 11;
+    }
+
+    img {
+      object-position: 50% 37%;
+    }
+  }
+}

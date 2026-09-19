@@ -1,0 +1,56 @@
+// «Обучение»: форматы — квадратные карточки с текстом и фото
+.tracks {
+  // На 768 заголовок — с колонки 233, как на 960 (макет)
+  .section-head__label-col {
+    @include only(md) {
+      width: map-get($label-col-width, lg);
+    }
+  }
+
+  .section-head__title {
+    @include up(lg) {
+      max-width: 603px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 10px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      column-gap: 14px;
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 10px;
+    }
+
+    @include up(xl) {
+      gap: 30px;
+      margin-top: 100px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    padding: 30px;
+    background: $c-line-strong;
+    text-align: center;
+
+    &--photo {
+      padding: 0;
+      @include img-cover(1, 1);
+    }
+  }
+}

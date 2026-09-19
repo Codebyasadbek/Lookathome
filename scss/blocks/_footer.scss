@@ -1,0 +1,119 @@
+.footer {
+  // Подвал везде в стиле txt дизайн-системы (+1%), в том числе на главной
+  --txt-ls: 0.01em;
+  padding: 40px 0 46px;
+  letter-spacing: var(--txt-ls);
+
+  @include up(sm) {
+    padding: 60px 0 33px;
+  }
+
+  @include up(md) {
+    padding: 80px 0 58px;
+  }
+
+  @include up(lg) {
+    padding-bottom: 62px;
+  }
+
+  @include up(xl) {
+    padding: 100px 0 64px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 153px;
+    grid-template-areas:
+      "nav contacts"
+      "nav socials"
+      "legal legal";
+
+    @include up(sm) {
+      grid-template-columns: 1fr 159px;
+    }
+
+    @include up(md) {
+      grid-template-columns: 1fr 160px;
+      grid-template-areas:
+        "nav contacts"
+        "legal socials";
+      row-gap: 64px;
+    }
+
+    @include up(lg) {
+      grid-template-columns: 1fr 219px;
+    }
+
+    @include up(xl) {
+      grid-template-columns: 1fr 189px;
+    }
+  }
+
+  &__nav {
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    @include up(md) {
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    @include up(lg) {
+      gap: 10px;
+    }
+
+    @include up(xl) {
+      gap: 24px;
+    }
+  }
+
+  &__contacts,
+  &__socials,
+  &__legal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__contacts {
+    grid-area: contacts;
+    gap: 8px;
+
+    @include up(md) {
+      gap: 15px;
+    }
+  }
+
+  &__socials {
+    grid-area: socials;
+    gap: 7px;
+    margin-top: 67px;
+
+    @include up(md) {
+      gap: 10px;
+      margin-top: 0;
+    }
+  }
+
+  &__legal {
+    grid-area: legal;
+    gap: 8px;
+    margin-top: 29px;
+
+    @include up(md) {
+      gap: 12px;
+      margin-top: 0;
+    }
+  }
+
+  &__link {
+    @include hover-underline;
+
+    &--accent {
+      color: $c-accent;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+// Начало внутренней страницы: хлебные крошки и заголовок H1
+.page-head {
+  padding-top: 80px;
+
+  @include up(md) {
+    padding-top: 100px;
+  }
+
+  &__title {
+    margin-top: 40px;
+    @include h1;
+  }
+}

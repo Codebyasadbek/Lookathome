@@ -1,0 +1,245 @@
+.hero {
+  position: relative;
+  color: $c-white;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 100% 50%;
+
+      @include up(xl) {
+        object-position: 50% 50%;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #833f23;
+      mix-blend-mode: multiply;
+      opacity: 0.5;
+    }
+  }
+
+  &__container {
+    position: relative;
+    padding-top: 132px;
+    padding-bottom: 60px;
+
+    @include up(sm) {
+      padding-top: 157px;
+      padding-bottom: 70px;
+    }
+
+    @include up(md) {
+      padding-top: 177px;
+      padding-bottom: 100px;
+    }
+
+    @include up(xl) {
+      min-height: 971px;
+      padding-top: 203px;
+      padding-bottom: 60px;
+    }
+  }
+
+  &__content {
+    @include up(xl) {
+      padding-top: 30px;
+    }
+  }
+
+  &__title {
+    @include h1;
+
+    @include up(lg) {
+      max-width: 779px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 20px;
+    font-family: $ff-head;
+    letter-spacing: -0.03em;
+    @include font(16, 1.2);
+
+    @include up(sm) {
+      margin-top: 30px;
+      @include font(20, 1.2);
+    }
+
+    @include up(md) {
+      max-width: 535px;
+      margin-top: 40px;
+      @include font(24, 1.2);
+    }
+
+    @include up(xl) {
+      margin-top: 60px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 30px;
+
+    @include up(sm) {
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    @include up(md) {
+      flex-direction: row;
+      align-items: center;
+      gap: 31px;
+    }
+
+    @include up(lg) {
+      gap: 30px;
+    }
+
+    @include up(xl) {
+      gap: 40px;
+      margin-top: 60px;
+    }
+  }
+
+  &__card {
+    margin-top: 73px;
+
+    @include up(sm) {
+      margin-top: 40px;
+    }
+
+    @include up(md) {
+      margin-top: 102px;
+    }
+
+    @include up(lg) {
+      margin-top: 57px;
+    }
+
+    @include up(xl) {
+      margin-top: 0;
+    }
+  }
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: 129px 141px;
+  column-gap: 10px;
+  row-gap: 20px;
+  padding: 20px 0 15px 20px;
+  border-radius: 8px;
+  background: rgba(247, 235, 223, 0.1);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+
+  &__stat {
+    min-width: 0;
+    border-right: 1px solid $c-taupe;
+  }
+
+  &__num {
+    font-family: $ff-head;
+    letter-spacing: -0.03em;
+    @include font(37, 1.2);
+  }
+
+  &__caption {
+    max-width: 150px;
+
+    .hero-card__stat--2 & {
+      max-width: 96px;
+    }
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    max-width: 280px;
+  }
+
+  @include up(sm) {
+    grid-template-columns: 180px 189px;
+    column-gap: 30px;
+    row-gap: 40px;
+    padding: 20px 20px 15px;
+
+    &__text {
+      grid-column: auto;
+      max-width: none;
+    }
+  }
+
+  @include up(md) {
+    grid-template-columns: 148px 167px 321px;
+    grid-template-rows: auto 1fr;
+    row-gap: 0;
+    padding: 30px 0 25px 32px;
+
+    &__stat {
+      grid-row: 1 / span 2;
+      align-self: start;
+    }
+
+    &__text {
+      grid-column: 3;
+
+      &--2 {
+        margin-top: $txt-lh;
+      }
+    }
+  }
+
+  @include up(lg) {
+    grid-template-columns: 148px 167px 336px;
+    padding: 30px;
+  }
+
+  @include up(xl) {
+    display: block;
+    width: 282px;
+    padding: 30px;
+
+    &__stat {
+      border: 0;
+
+      &--1 {
+        margin-bottom: 40px;
+      }
+
+      &--2 {
+        margin-bottom: 20px;
+      }
+    }
+
+    &__caption,
+    .hero-card__stat--2 &__caption {
+      max-width: none;
+    }
+
+    &__text {
+      // 19px + 1px линии = 20px, как в Figma (линия внутри отступа)
+      &--1 {
+        padding-top: 19px;
+        border-top: 1px solid rgba(211, 194, 175, 0.6);
+      }
+
+      &--2 {
+        padding-bottom: 19px;
+        border-bottom: 1px solid rgba(211, 194, 175, 0.6);
+      }
+    }
+  }
+}

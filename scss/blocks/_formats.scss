@@ -1,0 +1,293 @@
+// «Жилые интерьеры»: форматы работы — аккордеон
+.formats {
+  .section-head__title {
+    @include up(lg) {
+      max-width: 583px;
+    }
+  }
+
+  &__list {
+    position: relative;
+    z-index: 0;
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      margin-top: 100px;
+    }
+  }
+}
+
+// Пункт: номер | заголовок, описание, шеврон; при раскрытии — фото и подробности.
+// Колонка номера — по макету (ширина «01»), остальные номера заходят в отступ
+.format {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: start;
+  column-gap: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid $c-line-strong;
+  transition: border-color 0.35s $ease, grid-template-columns 0.35s $ease, column-gap 0.35s $ease;
+
+  // Фон раскрытого пункта — на всю ширину экрана
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: -1px;
+    left: 50%;
+    z-index: -1;
+    width: 100vw;
+    background: $c-taupe;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.35s $ease;
+  }
+
+  &.is-open {
+    border-color: transparent;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &__num {
+    @include big-num;
+  }
+
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 30px 10px;
+    text-align: left;
+
+    @include hover {
+      .format__title {
+        color: $c-brown;
+      }
+    }
+  }
+
+  &__title {
+    color: $c-soft;
+    @include h3;
+    transition: color 0.3s $ease;
+
+    .format.is-open & {
+      color: $c-brown;
+    }
+  }
+
+  &__summary {
+    grid-column: 1 / -1;
+  }
+
+  &__icon {
+    grid-row: 1;
+    grid-column: 2;
+    @include accordion-icon(".format");
+  }
+
+  &__media,
+  &__body {
+    grid-column: 2;
+    @include accordion-body(".format");
+  }
+
+  &__photo {
+    margin-top: 30px;
+    @include img-cover(1, 1);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+  }
+
+  &__subtitle {
+    @include h3-static;
+  }
+
+  &__text + &__subtitle {
+    margin-top: 30px;
+  }
+
+  &__points {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  @include up(sm) {
+    grid-template-columns: 55px 1fr;
+
+    &__head {
+      column-gap: 30px;
+    }
+
+    &__text + &__subtitle {
+      margin-top: 40px;
+    }
+
+    &__points,
+    &__list {
+      gap: 30px;
+    }
+
+    &__aside {
+      gap: 40px;
+    }
+  }
+
+  // Заголовок, описание и шеврон — в колонках пункта (subgrid);
+  // фото под заголовком, подробности под описанием
+  @include up(md) {
+    grid-template-columns: 55px 281px 1fr 32px;
+
+    &__head {
+      grid-column: 2 / -1;
+      grid-template-columns: subgrid;
+      column-gap: normal; // промежутки — как у сетки пункта
+    }
+
+    &__summary {
+      grid-column: auto;
+    }
+
+    &__icon {
+      grid-row: auto;
+      grid-column: auto;
+      justify-self: end;
+    }
+
+    &__media {
+      grid-row: 2;
+      grid-column: 2;
+    }
+
+    &__body {
+      grid-row: 2;
+      grid-column: 3 / -1;
+    }
+
+    &__photo {
+      margin-top: 40px;
+    }
+
+    &__content {
+      padding-top: 40px;
+    }
+  }
+
+  @include up(lg) {
+    grid-template-columns: 86px 281px 1fr 32px;
+
+    &__photo {
+      max-width: 336px;
+    }
+
+    &__text {
+      max-width: 385px;
+    }
+  }
+
+  // Раскрытый пункт на 768 и 960 — своя сетка (так в макете): под заголовком фото,
+  // описание переходит в колонку подробностей
+  @include only(md) {
+    &.is-open {
+      grid-template-columns: 61px 282px 1fr 26px;
+      column-gap: 24px;
+    }
+
+    &.is-open .format__title {
+      max-width: 227px;
+    }
+
+    &__photo {
+      margin-top: 30px;
+    }
+
+    &__content {
+      padding-top: 20px;
+    }
+  }
+
+  @include only(lg) {
+    &.is-open {
+      grid-template-columns: 89px 353px 1fr 32px;
+    }
+
+    &.is-open .format__title {
+      max-width: 284px;
+    }
+  }
+
+  // 1920: фото слева от заголовка, под ним — две колонки подробностей
+  @include up(xl) {
+    grid-template-columns: 72px 282px 282px 1fr 32px;
+
+    &__head {
+      grid-column: 3 / -1;
+    }
+
+    &__media {
+      grid-row: 1 / span 2;
+    }
+
+    &__body {
+      grid-column: 3 / -1;
+    }
+
+    // Фото — на уровне букв заголовка, подзаголовок ближе к тексту (макет)
+    &__photo {
+      margin-top: 8px;
+    }
+
+    &__text + &__subtitle {
+      margin-top: 32px;
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: 282px 1fr;
+      align-items: start;
+    }
+
+    &__details {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    &__points {
+      display: grid;
+      grid-template-columns: 202px 1fr;
+      column-gap: 25px;
+    }
+  }
+}

@@ -1,0 +1,132 @@
+// «Обо мне»: профессиональный путь — заголовок, два текста, два фото
+.story {
+  // На 1920 в макете от блока выше — 227
+  @include up(xl) {
+    margin-top: 227px;
+  }
+
+  // Колонка контента начинается там же, где заголовок у .section-head
+  &__head {
+    @include up(lg) {
+      margin-left: map-get($label-col-width, lg);
+    }
+
+    // Как offset-4 в .row: 4 колонки вместе с гаттерами
+    @include up(xl) {
+      margin-left: calc((100% + #{$grid-gutter-width}) / 3);
+    }
+  }
+
+  &__title {
+    @include h2;
+
+    @include up(md) {
+      max-width: 687px;
+    }
+
+    @include up(xl) {
+      max-width: none;
+    }
+  }
+
+  &__lead {
+    margin-top: 40px;
+    @include h3;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      max-width: 569px;
+      margin-top: 40px;
+    }
+  }
+
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    gap: $txt-lh;
+    margin-top: 40px;
+
+    @include up(md) {
+      flex-direction: row;
+      gap: 30px;
+      margin-top: 60px;
+
+      > * {
+        flex: 0 0 282px;
+      }
+    }
+
+    @include up(lg) {
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      margin-top: 100px;
+    }
+  }
+
+  &__photos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0;
+    }
+
+    @include up(lg) {
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      justify-content: flex-start;
+      gap: 30px;
+      margin-top: 100px;
+    }
+  }
+
+  &__small {
+    @include img-cover(4, 5);
+
+    @include up(md) {
+      width: pct(276, 728);
+    }
+
+    @include up(lg) {
+      width: pct(351, 920);
+    }
+
+    @include up(xl) {
+      width: 386px;
+      aspect-ratio: 386 / 576;
+    }
+  }
+
+  &__big {
+    @include img-cover(2, 3);
+
+    @include up(md) {
+      width: pct(425, 728);
+    }
+
+    @include up(lg) {
+      width: pct(541, 920);
+    }
+
+    @include up(xl) {
+      width: 594px;
+    }
+  }
+}

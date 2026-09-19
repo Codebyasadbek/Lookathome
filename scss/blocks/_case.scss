@@ -1,0 +1,209 @@
+// Страница проекта: начало (заголовок, подпись, фото или видео, два текста).
+// Отступ сверху по макету модулей: 40 / 60 / 80 / 100 (1280+)
+.case {
+  padding-top: 40px;
+
+  @include up(sm) {
+    padding-top: 60px;
+  }
+
+  @include up(md) {
+    padding-top: 80px;
+  }
+
+  @include up(xl) {
+    padding-top: 100px;
+  }
+
+  &__title {
+    margin-top: 20px;
+
+    @include up(xl) {
+      max-width: 829px;
+    }
+  }
+
+  &__meta {
+    margin-top: 20px;
+    color: $c-soft;
+    text-transform: uppercase;
+    letter-spacing: var(--txt-ls);
+    @include font(12, 1.4);
+
+    @include up(sm) {
+      margin-top: 30px;
+      @include font(14, 1.4);
+    }
+
+    @include up(md) {
+      margin-top: 40px;
+    }
+
+    @include up(xl) {
+      max-width: 698px;
+    }
+  }
+
+  &__media {
+    margin-top: 30px;
+
+    @include up(sm) {
+      margin-top: 40px;
+    }
+
+    @include up(md) {
+      margin-top: 60px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // Лид и текст; с 1280 — с колонки offset-4
+  &__texts {
+    display: grid;
+    align-items: start;
+    gap: 30px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @include up(md) {
+      grid-template-columns: pct(346, 728) pct(328, 728);
+      column-gap: pct(54, 728);
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      grid-template-columns: pct(398, 920) pct(386, 920);
+      column-gap: pct(67, 920);
+    }
+
+    @include up(xl) {
+      grid-template-columns: 282px 386px;
+      column-gap: 30px;
+      margin-top: 100px;
+      margin-left: calc((100% + #{$grid-gutter-width}) / 3);
+    }
+  }
+
+  &__lead {
+    @include h4;
+  }
+
+  // С видео: видео и тексты — в колонке заголовка секций
+  &--portrait {
+    .case__meta {
+      max-width: none;
+    }
+
+    .case__media,
+    .case__texts {
+      @each $bp, $width in $label-col-width {
+        @include only($bp) {
+          margin-left: $width;
+        }
+      }
+    }
+
+    .case__media {
+      max-width: 490px;
+
+      @include up(xl) {
+        margin-top: 128px;
+        margin-left: calc((100% + #{$grid-gutter-width}) / 3);
+      }
+    }
+
+    .case__texts {
+      gap: 20px;
+
+      @include up(sm) {
+        gap: 10px;
+      }
+
+      @include only(md) {
+        grid-template-columns: none;
+        gap: 40px;
+      }
+
+      @include only(lg) {
+        grid-template-columns: 277fr 379fr;
+        column-gap: 31px;
+        margin-top: 60px;
+      }
+
+      @include up(xl) {
+        column-gap: 30px;
+      }
+    }
+  }
+}
+
+// Первый модуль после шапки с фото на 1920 — ближе (176, макет Project 1)
+.case:not(.case--portrait) + .section {
+  @include up(xl) {
+    padding-top: 176px;
+  }
+}
+
+// Текстовый модуль: подпись и текст (H4) в колонках сетки
+.case-note {
+  display: grid;
+  align-items: baseline;
+  gap: 20px;
+  @include grid-12(sm);
+
+  &__label {
+    color: $c-soft;
+    text-transform: uppercase;
+
+    @include up(sm) {
+      grid-column: 1 / span 6;
+    }
+
+    @include up(md) {
+      grid-column: 1 / span 4;
+    }
+
+    @include up(lg) {
+      grid-column: 4 / span 3;
+    }
+
+    @include up(xl) {
+      grid-column: 5 / span 3;
+    }
+  }
+
+  &__text {
+    @include h4;
+
+    p + p {
+      margin-top: 1.2em;
+    }
+
+    @include up(sm) {
+      grid-column: 7 / span 6;
+    }
+
+    @include up(md) {
+      grid-column: 5 / span 8;
+      max-width: 386px;
+    }
+
+    @include up(lg) {
+      grid-column: 7 / span 6;
+    }
+
+    @include up(xl) {
+      grid-column: 8 / span 5;
+      max-width: none;
+    }
+  }
+}

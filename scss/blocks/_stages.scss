@@ -1,0 +1,271 @@
+.stages {
+  &__btn {
+    width: 100%;
+
+    @include up(sm) {
+      width: 281px;
+    }
+  }
+
+  &__list {
+    position: relative;
+    z-index: 0;
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      margin-top: 100px;
+    }
+  }
+
+  // Картинка, следующая за курсором (только 1920)
+  &__float {
+    display: none;
+
+    @include up(xl) {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 104px;
+      z-index: 2;
+      width: 282px;
+      height: 350px;
+      pointer-events: none;
+      opacity: 0;
+      clip-path: inset(50% 0 50% 0);
+      transition: opacity 0.3s $ease, clip-path 0.5s $ease;
+      will-change: transform;
+
+      &.is-visible {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+      }
+
+      img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.35s $ease;
+
+        &.is-active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__down {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 60px;
+
+    @include up(sm) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0;
+      margin-top: 80px;
+    }
+
+    @include up(md) {
+      margin-top: 100px;
+    }
+
+    @include up(xl) {
+      justify-content: flex-start;
+      gap: 30px;
+      margin-top: 200px;
+    }
+  }
+
+  &__small {
+    @include img-cover(2, 3);
+
+    @include up(sm) {
+      width: pct(110, 440);
+    }
+
+    @include up(md) {
+      width: pct(180, 728);
+    }
+
+    @include up(lg) {
+      width: pct(222, 920);
+    }
+
+    @include up(xl) {
+      flex: 0 0 auto;
+      width: 386px;
+      aspect-ratio: 386 / 579;
+    }
+  }
+
+  &__big {
+    @include img-cover(1152, 800);
+
+    @include up(sm) {
+      width: pct(320, 440);
+    }
+
+    @include up(md) {
+      width: pct(535, 728);
+    }
+
+    @include up(lg) {
+      width: pct(687, 920);
+    }
+
+    @include up(xl) {
+      flex: 1 1 auto;
+      width: auto;
+      margin-right: calc((#{$container} - 100vw) / 2);
+    }
+  }
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "num img"
+    "body body";
+  padding-bottom: 30px;
+  border-bottom: 1px solid $c-line;
+
+  & + & {
+    margin-top: 30px;
+  }
+
+  &__num {
+    grid-area: num;
+    @include big-num;
+  }
+
+  &__img {
+    grid-area: img;
+    width: 212px;
+    @include img-cover(212, 264);
+  }
+
+  &__body {
+    grid-area: body;
+    margin-top: 30px;
+  }
+
+  // Не шире трёх колонок (282): так все заголовки переносятся как в макете
+  &__title {
+    max-width: 282px;
+    @include h3-static;
+  }
+
+  &__text {
+    margin-top: 30px;
+
+    @include only(sm) {
+      max-width: 386px;
+    }
+  }
+
+  @include up(md) {
+    grid-template-columns: 101px 202px 1fr;
+    grid-template-areas: "num img body";
+
+    &__img {
+      width: 202px;
+      aspect-ratio: 202 / 252;
+    }
+
+    &__body {
+      max-width: 409px; // 30 + 379
+      margin-top: 0;
+      padding-left: 30px;
+    }
+
+    &__text {
+      margin-top: 50px;
+    }
+  }
+
+  @include up(lg) {
+    grid-template-columns: 167px 202px 1fr;
+
+    &__body {
+      max-width: none;
+      padding-left: 97px;
+    }
+
+    &__text {
+      max-width: 368px;
+    }
+  }
+
+  // 1920: строка списка, фото появляется при наведении
+  @include up(xl) {
+    display: flex;
+    align-items: center;
+    padding-top: 28px;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    & + & {
+      margin-top: 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: -1px;
+      left: 50%;
+      z-index: -1;
+      width: 100vw;
+      background: $c-taupe;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.35s $ease;
+    }
+
+    &.is-active::before {
+      opacity: 1;
+    }
+
+    &__num {
+      flex: 1 1 auto;
+    }
+
+    &__img {
+      display: none;
+    }
+
+    &__body {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      flex: 0 0 802px;
+      padding-left: 0;
+    }
+
+    &__title {
+      flex: 0 0 282px;
+    }
+
+    &__text {
+      max-width: 386px;
+      margin-top: 0;
+    }
+  }
+}

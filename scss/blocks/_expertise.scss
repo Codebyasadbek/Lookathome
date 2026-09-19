@@ -1,0 +1,125 @@
+// «Обо мне»: чем я занимаюсь — список направлений и два фото
+.expertise {
+  .section-head__title {
+    max-width: 278px;
+
+    @include up(sm) {
+      max-width: 387px;
+    }
+
+    @include up(md) {
+      max-width: 441px;
+    }
+
+    @include up(lg) {
+      max-width: 648px;
+    }
+  }
+
+  &__lists {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      max-width: 351px;
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      flex-direction: row;
+      gap: 10px;
+      max-width: none;
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      gap: 30px;
+    }
+
+    @include up(xl) {
+      gap: 40px;
+      margin-top: 100px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include up(md) {
+      flex: 1 1 0;
+    }
+
+    @include up(lg) {
+      flex: 0 0 282px;
+    }
+
+    // Колонки одной высоты: пункты распределяются по высоте
+    @include up(xl) {
+      justify-content: space-between;
+    }
+  }
+
+  &__photos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0;
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      gap: 30px;
+      margin-top: 100px;
+    }
+  }
+
+  &__small {
+    @include img-cover(2, 3);
+
+    @include up(md) {
+      width: pct(179, 728);
+    }
+
+    @include up(lg) {
+      width: pct(226, 920);
+    }
+
+    @include up(xl) {
+      flex: 0 0 386px;
+    }
+  }
+
+  &__big {
+    @include img-cover(1153, 800);
+
+    @include up(md) {
+      width: pct(535, 728);
+    }
+
+    @include up(lg) {
+      width: pct(676, 920);
+    }
+
+    // До правого края экрана
+    @include up(xl) {
+      flex: 1 1 0;
+      width: auto;
+      margin-right: calc((#{$container} - 100vw) / 2);
+    }
+  }
+}

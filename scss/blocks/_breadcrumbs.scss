@@ -1,0 +1,13 @@
+.breadcrumbs {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__item:not(:last-child) {
+    padding-right: 10px;
+    border-right: 1px solid $c-line-strong;
+    color: $c-soft;
+  }
+}

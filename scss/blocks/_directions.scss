@@ -1,0 +1,94 @@
+// «Услуги»: направления работы — карточки с номером, фото и ссылкой
+.directions {
+  // Отступы по макету: на 360 — как на 480, на 960 снизу 55
+  @include only(xs) {
+    margin-top: 80px;
+    padding-top: 80px;
+  }
+
+  @include only(lg) {
+    padding-bottom: 55px;
+  }
+
+  &__list {
+    display: grid;
+    gap: 30px;
+    margin-top: 60px;
+
+    // Ряды одной высоты: ссылки всех карточек на одном уровне
+    @include up(md) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 1fr;
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include up(xl) {
+      margin-top: 100px;
+    }
+  }
+}
+
+.direction {
+  display: flex;
+  flex-direction: column;
+  gap: 60px; // минимальный отступ от текста до ссылки
+  padding-bottom: 30px;
+  border-bottom: 1px solid $c-line;
+
+  @include up(sm) {
+    gap: 80px;
+  }
+
+  @include up(md) {
+    gap: 130px;
+  }
+
+  @include up(lg) {
+    gap: 25px;
+  }
+
+  @include up(xl) {
+    gap: 20px;
+  }
+
+  &__num {
+    font-family: $ff-head;
+    letter-spacing: -0.04em;
+    color: $c-soft;
+    opacity: 0.3;
+    @include font(62, 1.1);
+  }
+
+  // Высота фото одинаковая на всех экранах (так в макете)
+  &__photo {
+    height: 424px;
+    margin-top: 40px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    max-width: 263px;
+    margin-top: 30px;
+    @include h3-static;
+  }
+
+  &__text {
+    margin-top: 30px;
+  }
+
+  // Ссылка прижата к низу: карточки в ряду одной высоты
+  &__link {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+}

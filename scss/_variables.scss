@@ -1,0 +1,49 @@
+// Цвета
+$c-bg: #f4ece1;
+$c-white: #f4ece1;
+$c-taupe: #d3c2af;
+$c-brown: #3f1f0e;
+$c-soft: #856341;
+$c-orange: #60372b;
+$c-accent: #ac7f5e;
+$c-error: #a22a07;
+$c-line: rgba(133, 99, 65, 0.3);
+$c-line-strong: rgba(133, 99, 65, 0.4);
+
+$grad-dark: linear-gradient(170.31deg, #311104 0%, #833f23 100%);
+$grad-light: linear-gradient(170.31deg, #fbf8f2 0%, #f7ebdf 100%);
+$grad-glass: linear-gradient(166.16deg, rgba(251, 248, 242, 0.4) 0%, rgba(247, 235, 223, 0.3) 100%);
+
+// Шрифты
+$ff-head: "Tenor Sans", "Times New Roman", serif;
+$ff-text: "Raleway", Arial, sans-serif;
+
+// Контейнер (1218 + 2 * 20)
+$container: 1218px;
+
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+// Отступ между секциями по брейкпоинтам (360 / 480 / 768–960 / 1920)
+$section-space: (
+  xs: 60px,
+  sm: 80px,
+  md: 100px,
+  xl: 200px
+);
+
+// Колонка подписи секции на md и lg (заголовок начинается после неё)
+$label-col-width: (
+  md: 246px,
+  lg: 233px
+);
+
+// Страница проекта: гаттер 12-колоночной сетки модулей по брейкпоинтам
+$shots-gap: (
+  sm: 10px,
+  md: 18px,
+  lg: 22px,
+  xl: 30px
+);
+
+// Высота строки основного текста (14px * 1.4, округлено как в Figma)
+$txt-lh: 20px;

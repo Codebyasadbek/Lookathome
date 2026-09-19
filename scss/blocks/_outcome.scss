@@ -1,0 +1,81 @@
+// «Жилые интерьеры»: что вы получите — фото и список результатов
+.outcome {
+  // На 360 в макете от фото выше — 80 (60 снизу у секции выше + 20)
+  .section--taupe + & {
+    @include only(xs) {
+      padding-top: 20px;
+    }
+  }
+
+  // 1920: заголовок над списком (колонка offset-7)
+  .section-head__label-col {
+    @include up(xl) {
+      width: pct(7, 12);
+    }
+  }
+
+  .section-head__title {
+    @include only(lg) {
+      max-width: 568px;
+    }
+  }
+
+  &__body {
+    display: grid;
+    gap: 40px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      gap: 60px;
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      grid-template-columns: pct(388, 728) pct(311, 728);
+      justify-content: space-between;
+      align-items: start;
+      gap: 0;
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      grid-template-columns: pct(490, 920) pct(320, 920);
+      align-items: center;
+    }
+
+    @include up(xl) {
+      grid-template-columns: 594px 387px;
+      justify-content: start;
+      column-gap: 134px;
+      margin-top: 100px;
+    }
+  }
+
+  &__photo {
+    @include img-cover(594, 781);
+  }
+
+  &__item {
+    padding: 30px 30px 30px 0;
+    border-bottom: 1px solid $c-line-strong;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    @include up(lg) {
+      &:first-child {
+        padding-top: 30px;
+      }
+    }
+
+    // Карточки с отступами; текст 290px, как в макете
+    @include up(xl) {
+      padding: 30px 67px 30px 30px;
+
+      & + & {
+        margin-top: 30px;
+      }
+    }
+  }
+}

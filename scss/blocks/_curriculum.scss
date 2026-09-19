@@ -1,0 +1,58 @@
+// «Обучение»: что входит — фото и нумерованный список
+.curriculum {
+  // На 768 заголовок — с колонки 233, как на 960 (макет)
+  .section-head__label-col {
+    @include only(md) {
+      width: map-get($label-col-width, lg);
+    }
+  }
+
+  .section-head__title {
+    @include up(xl) {
+      max-width: 690px;
+    }
+  }
+
+  &__body {
+    display: grid;
+    gap: 40px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      gap: 60px;
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      gap: 80px;
+      margin-top: 40px;
+    }
+
+    @include up(lg) {
+      margin-top: 80px;
+    }
+
+    // Фото от левого края экрана до конца col-7, список — col-5; низ по одной линии
+    @include up(xl) {
+      grid-template-columns: 698px 1fr;
+      align-items: end;
+      gap: 30px;
+      margin-top: 53px;
+    }
+  }
+
+  &__photo {
+    @include img-cover(4, 3);
+
+    @include up(xl) {
+      margin-left: calc((#{$container} - 100vw) / 2);
+    }
+  }
+
+  &__list {
+    @include between(md, xl) {
+      columns: 2;
+      column-gap: 30px;
+    }
+  }
+}

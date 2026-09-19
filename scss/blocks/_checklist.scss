@@ -1,0 +1,30 @@
+// Нумерованный список с линиями: номера 01, 02… ставятся автоматически
+.checklist {
+  counter-reset: checklist;
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 30px 30px 30px 0;
+    border-bottom: 1px solid $c-line-strong;
+    counter-increment: checklist;
+    break-inside: avoid; // при выводе в колонки
+
+    &::before {
+      content: counter(checklist, decimal-leading-zero);
+      color: rgba($c-soft, 0.4);
+      @include h3-static;
+    }
+  }
+
+  // Первый пункт без отступа сверху (вровень с фото)
+  &--flush &__item:first-child {
+    padding-top: 0;
+  }
+
+  // Номера в колонке 72px — тексты на одной линии
+  &--aligned &__item::before {
+    flex: 0 0 72px;
+  }
+}

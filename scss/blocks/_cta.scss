@@ -1,0 +1,189 @@
+.cta {
+  position: relative;
+  padding: 100px 0;
+  color: $c-white;
+  text-align: center;
+  @include section-space(margin-top);
+
+  @include up(sm) {
+    padding: 200px 0;
+  }
+
+  @include up(md) {
+    padding-bottom: 199px;
+  }
+
+  @include up(xl) {
+    padding-bottom: 204px;
+  }
+
+  // Фото фона; затемнение задаёт модификатор (--cta-shade)
+  &__bg {
+    position: absolute;
+    inset: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--cta-shade, none);
+      mix-blend-mode: multiply;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__title {
+    max-width: 320px;
+    margin: 0 auto;
+    @include h2;
+
+    @include up(sm) {
+      max-width: 440px;
+    }
+
+    @include up(md) {
+      max-width: 728px;
+    }
+
+    @include up(lg) {
+      max-width: 876px;
+    }
+  }
+
+  &__text {
+    max-width: 322px;
+    margin: 40px auto 0;
+  }
+
+  &__btn {
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 30px;
+    }
+
+    @include up(md) {
+      margin-top: 40px;
+    }
+
+    @include up(xl) {
+      margin-top: 72px;
+    }
+  }
+
+  // Сразу после бежевой секции — без отступа
+  .section--taupe + & {
+    margin-top: 0;
+  }
+
+  // С текстом под заголовком: заголовок шире, отступы по 40.
+  // Высота — как у компонента в макете (696), длинный текст увеличивает блок
+  &--text {
+    min-height: 696px;
+    padding: 200px 0 134px;
+
+    .cta__title {
+      @include up(lg) {
+        max-width: 933px;
+      }
+    }
+
+    .cta__btn {
+      margin-top: 40px;
+    }
+  }
+
+  // Заголовок слева, кнопка справа («Обучение»)
+  &--row {
+    padding: 100px 0;
+    text-align: left;
+
+    @include up(md) {
+      padding: 200px 0;
+    }
+
+    .cta__container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+
+      @include up(sm) {
+        gap: 40px;
+      }
+
+      @include up(lg) {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px;
+      }
+    }
+
+    .cta__title {
+      margin: 0;
+
+      @include only(md) {
+        max-width: 586px;
+      }
+
+      @include only(lg) {
+        max-width: 578px;
+      }
+
+      @include up(xl) {
+        max-width: 906px;
+      }
+    }
+
+    .cta__btn {
+      flex-shrink: 0;
+      margin-top: 0;
+
+      @include up(lg) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  // Затемнённое фото (страница проекта)
+  &--shade {
+    --cta-shade: rgba(49, 17, 4, 0.5);
+  }
+
+  // Цитата («Обо мне»): затемнённое фото
+  // Высота по содержимому
+  &--quote {
+    --cta-shade: rgba(46, 23, 10, 0.3);
+    min-height: 0;
+    padding-bottom: 200px;
+
+    @include down(sm) {
+      padding: 100px 0;
+    }
+
+    @include up(xl) {
+      padding-bottom: 220px;
+    }
+
+    .cta__bg img {
+      @include up(xl) {
+        object-position: 50% 70%;
+      }
+    }
+
+    .cta__title {
+      @include only(sm) {
+        max-width: 382px;
+      }
+    }
+  }
+}

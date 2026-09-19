@@ -1,0 +1,64 @@
+// Мобильное меню (< 960)
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  width: 256px;
+  max-width: 100%;
+  padding: 38px 20px 60px 26px;
+  background: $c-taupe;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.4s $ease, visibility 0.4s;
+
+  &.is-open {
+    transform: none;
+    visibility: visible;
+  }
+
+  &__close {
+    display: block;
+    width: 28px;
+    height: 28px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 41px;
+    padding-left: 1px;
+  }
+
+  &__link {
+    color: $c-brown;
+    letter-spacing: 0.01em;
+    @include hover-underline;
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    visibility: hidden;
+
+    &.is-open {
+      visibility: visible;
+    }
+  }
+
+  @include up(lg) {
+    display: none;
+
+    &__overlay {
+      display: none;
+    }
+  }
+}

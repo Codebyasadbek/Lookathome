@@ -1,0 +1,143 @@
+.faq {
+  .section-head__label {
+    @include up(md) {
+      max-width: 134px;
+      margin-top: 4px;
+    }
+
+    @include up(xl) {
+      max-width: none;
+      margin-top: 0;
+    }
+  }
+
+  .section-head__title {
+    @include up(md) {
+      max-width: 525px;
+    }
+
+    @include up(xl) {
+      max-width: 490px;
+    }
+  }
+
+  &__body {
+    margin-top: 40px;
+    padding: 0 20px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 100px;
+      padding: 0 container-offset() 0 0;
+    }
+  }
+
+  &__photo {
+    @include img-cover(920, 1261);
+
+    @include up(xl) {
+      flex: 1 1 auto;
+      aspect-ratio: auto;
+      height: 1092px;
+    }
+  }
+
+  &__list {
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 30px;
+    }
+
+    @include up(md) {
+      margin-top: 40px;
+    }
+
+    @include up(lg) {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    @include up(xl) {
+      display: block;
+      flex: 0 0 802px;
+      margin: 0 0 0 30px;
+    }
+  }
+
+  &__col {
+    @include up(lg) {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    &:first-child .faq-item:first-child {
+      padding-top: 0;
+    }
+
+    // На 480 в макете между вопросами 9px
+    & + & {
+      @include only(sm) {
+        margin-top: 9px;
+      }
+    }
+  }
+}
+
+.faq-item {
+  padding: 30px 0 29px; // 1px — нижняя граница, в Figma она внутри блока
+  border-bottom: 1px solid $c-line-strong;
+  transition: border-color 0.3s $ease;
+
+  & + & {
+    @include only(sm) {
+      margin-top: 9px;
+    }
+  }
+
+  @include hover {
+    border-color: $c-soft;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    text-align: left;
+  }
+
+  &__question {
+    flex: 1 1 0;
+    min-width: 0;
+    @include h3;
+  }
+
+  &__icon {
+    border-radius: 50%;
+    background: $c-bg;
+    @include accordion-icon(".faq-item");
+  }
+
+  &__body {
+    @include accordion-body(".faq-item");
+  }
+
+  &__answer {
+    padding-top: 24px;
+
+    @include up(xl) {
+      padding-right: 30px;
+    }
+  }
+}

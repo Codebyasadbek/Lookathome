@@ -1,0 +1,74 @@
+// ==========================================================================
+// Bootstrap grid (только сетка) + стили проекта
+// ==========================================================================
+
+@import "vendor/bootstrap/functions";
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 960px,
+  xl: 1280px
+);
+$container-max-widths: (
+  xl: 1258px
+);
+$grid-gutter-width: 30px;
+$container-padding-x: 40px; // по 20px с каждой стороны
+
+@import "vendor/bootstrap/variables";
+@import "vendor/bootstrap/variables-dark";
+@import "vendor/bootstrap/maps";
+@import "vendor/bootstrap/mixins/breakpoints";
+@import "vendor/bootstrap/mixins/container";
+@import "vendor/bootstrap/mixins/grid";
+@import "vendor/bootstrap/containers";
+@import "vendor/bootstrap/grid";
+
+@import "variables";
+@import "mixins";
+@import "base";
+@import "buttons";
+
+@import "blocks/header";
+@import "blocks/menu";
+@import "blocks/hero";
+@import "blocks/section-head";
+@import "blocks/about";
+@import "blocks/portfolio";
+@import "blocks/services";
+@import "blocks/stages";
+@import "blocks/faq";
+@import "blocks/cta";
+@import "blocks/breadcrumbs";
+@import "blocks/page-head";
+@import "blocks/intro";
+@import "blocks/story";
+@import "blocks/expertise";
+@import "blocks/approach";
+@import "blocks/experience";
+@import "blocks/overview";
+@import "blocks/directions";
+@import "blocks/point";
+@import "blocks/living";
+@import "blocks/audience";
+@import "blocks/outcome";
+@import "blocks/formats";
+@import "blocks/fact";
+@import "blocks/checklist";
+@import "blocks/brief";
+@import "blocks/scope";
+@import "blocks/why";
+@import "blocks/study";
+@import "blocks/tracks";
+@import "blocks/curriculum";
+@import "blocks/consult";
+@import "blocks/showcase";
+@import "blocks/filter";
+@import "blocks/projects";
+@import "blocks/case";
+@import "blocks/shots";
+@import "blocks/video";
+@import "blocks/footer";
+@import "blocks/modal";

@@ -1,0 +1,71 @@
+// Фильтр по категориям: вкладки; до 768 — раскрывающийся список
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      color: $c-orange;
+      @include icon-mask("../img/icons/chevron-down.svg");
+      transition: transform 0.3s $ease;
+    }
+
+    .filter.is-open &::after {
+      transform: rotate(180deg);
+    }
+
+    @include up(md) {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+
+    .filter.is-open & {
+      display: flex;
+    }
+
+    @include up(md) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px 40px;
+      margin-top: 0;
+    }
+  }
+
+  // Активная категория — тёмная и подчёркнута
+  &__label,
+  &__btn.is-active {
+    padding-bottom: 4px;
+    border-bottom: 1px solid $c-soft;
+  }
+
+  &__btn {
+    color: $c-soft;
+    transition: color 0.3s $ease;
+
+    &.is-active {
+      color: $c-brown;
+    }
+
+    @include hover {
+      color: $c-brown;
+    }
+  }
+}

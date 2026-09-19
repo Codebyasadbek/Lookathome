@@ -1,0 +1,137 @@
+// Страница проекта: модули с фото и видео (конструктор).
+// Фото — в своих пропорциях (width/height у img), колонки — сетка из 12
+.shots {
+  display: grid;
+  align-items: start;
+  gap: 20px;
+  @include grid-12;
+
+  @include up(sm) {
+    row-gap: 30px;
+  }
+
+  &__photo {
+    grid-column: 1 / -1;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // 6 + 6
+  &--portrait-6-6 .shots__photo {
+    @include up(md) {
+      grid-column: span 6;
+    }
+  }
+
+  // 7 + 5; до 768 второе фото уже, у горизонтального — первым
+  &--portrait-7-5,
+  &--landscape-7-5 {
+    .shots__photo {
+      @include up(md) {
+        grid-column: span 7;
+
+        &:last-child {
+          grid-column: span 5;
+        }
+      }
+    }
+  }
+
+  &--portrait-7-5 .shots__photo:last-child {
+    @include down(md) {
+      width: pct(2, 3);
+    }
+  }
+
+  &--landscape-7-5 .shots__photo:last-child {
+    @include down(md) {
+      order: -1;
+      width: 70%;
+    }
+  }
+
+  // 4 + 8; портретный — в две колонки уже с 480
+  &--portrait-4-8 {
+    @include grid-12(sm);
+  }
+
+  &--portrait-4-8,
+  &--landscape-4-8 {
+    .shots__photo {
+      @include up(md) {
+        grid-column: span 4;
+
+        &:last-child {
+          grid-column: span 8;
+        }
+      }
+    }
+  }
+
+  &--portrait-4-8 .shots__photo {
+    @include only(sm) {
+      grid-column: span 4;
+
+      &:last-child {
+        grid-column: span 8;
+      }
+    }
+  }
+
+  &--landscape-4-8 .shots__photo:first-child {
+    @include down(md) {
+      width: 48%;
+    }
+  }
+
+  // Вертикальное + горизонтальное: 3 + 9 с 480, 4 + 8 с 1280
+  &--mixed-4-8 {
+    @include grid-12(sm);
+
+    .shots__photo {
+      @include up(sm) {
+        grid-column: span 3;
+
+        &:last-child {
+          grid-column: span 9;
+        }
+      }
+
+      @include up(xl) {
+        grid-column: span 4;
+
+        &:last-child {
+          grid-column: span 8;
+        }
+      }
+    }
+  }
+
+  // Одно фото или видео в колонке заголовка секций
+  &--portrait-8 .shots__photo,
+  &--video .video {
+    @include only(md) {
+      grid-column: 5 / -1;
+    }
+
+    @include only(lg) {
+      grid-column: 4 / -1;
+    }
+
+    @include up(xl) {
+      grid-column: 5 / span 8;
+    }
+  }
+
+  &--video .video {
+    max-width: 490px;
+
+    @include up(xl) {
+      grid-column: 5 / span 5;
+    }
+  }
+}

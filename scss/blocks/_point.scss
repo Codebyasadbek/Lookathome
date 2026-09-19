@@ -1,0 +1,12 @@
+// Пункт списка со стрелкой
+.point {
+  display: flex;
+  gap: 20px;
+
+  &::before {
+    content: "";
+    flex: 0 0 18px;
+    height: 18px;
+    @include icon-mask("../img/icons/arrow-18.svg");
+  }
+}

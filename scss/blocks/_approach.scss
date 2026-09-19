@@ -1,0 +1,93 @@
+// «Обо мне»: мой подход — подпись, заголовок, фото и текст
+.approach {
+  // На 768 в макете от блока выше — 80
+  @include only(md) {
+    margin-top: 80px;
+  }
+
+  &__grid {
+    display: grid;
+    align-items: start;
+    grid-template-areas:
+      "label"
+      "title"
+      "photo"
+      "text";
+
+    // Подпись + заголовок, ниже фото (386) + текст с 485px
+    @each $bp, $width in $label-col-width {
+      @include up($bp) {
+        grid-template-columns: $width (386px - $width) 79px 1fr;
+      }
+    }
+
+    @include up(md) {
+      grid-template-areas:
+        "label title title title"
+        "photo photo . text";
+      row-gap: 80px;
+    }
+
+    // col-2 подпись | col-4 фото | отступ col-1 | col-5 заголовок и текст
+    @include up(xl) {
+      grid-template-columns: 208px 386px 134px 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "label photo . title"
+        "label photo . text";
+      row-gap: 100px;
+    }
+  }
+
+  &__label {
+    grid-area: label;
+    color: var(--label-color);
+    text-transform: uppercase;
+  }
+
+  &__title {
+    grid-area: title;
+    margin-top: 20px;
+    @include h2;
+
+    @include up(md) {
+      margin-top: 0;
+    }
+  }
+
+  &__photo {
+    grid-area: photo;
+    margin-top: 40px;
+    @include img-cover(438, 647);
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      margin-top: 0;
+      aspect-ratio: 386 / 571;
+    }
+
+    @include up(xl) {
+      aspect-ratio: 386 / 608;
+    }
+  }
+
+  &__text {
+    grid-area: text;
+    margin-top: 30px;
+
+    @include up(sm) {
+      margin-top: 40px;
+    }
+
+    @include up(md) {
+      margin-top: 0;
+    }
+
+    @include up(lg) {
+      max-width: 403px;
+    }
+  }
+}

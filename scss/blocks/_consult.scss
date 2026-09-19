@@ -1,0 +1,39 @@
+// «Обучение»: разовые консультации — подпись, заголовок и текст
+.consult {
+  &__label {
+    @include label;
+  }
+
+  &__body {
+    display: grid;
+    gap: 40px;
+    margin-top: 20px;
+
+    @include up(sm) {
+      gap: 60px;
+      margin-top: 40px;
+    }
+
+    @include only(md) {
+      gap: 80px;
+      max-width: 581px;
+    }
+
+    @include up(lg) {
+      grid-template-columns: repeat(2, minmax(0, 400px));
+      justify-content: space-between;
+      align-items: start;
+      gap: 100px;
+    }
+
+    @include up(xl) {
+      grid-template-columns: 624px 423px;
+      justify-content: start;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    @include h2;
+  }
+}

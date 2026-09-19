@@ -1,0 +1,66 @@
+// «Интерьеры яхт»: что вы получите — фото и нумерованный список
+.scope {
+  // Отступы по макету: снизу 80 / 69 (960) / 275 (1920), на 1920 от фото выше — 354
+  @include only(xs) {
+    padding-bottom: 80px;
+  }
+
+  @include only(lg) {
+    padding-bottom: 69px;
+  }
+
+  @include up(xl) {
+    padding-bottom: 275px;
+  }
+
+  .section--taupe + & {
+    @include up(xl) {
+      padding-top: 154px; // + 200 снизу у секции выше
+    }
+  }
+
+  // Две строки одинаковой длины, как в макете
+  .section-head__title {
+    @include only(lg) {
+      text-wrap: balance;
+    }
+  }
+
+  &__body {
+    display: grid;
+    gap: 40px;
+    margin-top: 60px;
+
+    @include up(md) {
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 10px;
+    }
+
+    // Фото — col-7, список — col-5
+    @include up(xl) {
+      grid-template-columns: 698px 1fr;
+      column-gap: 30px;
+      margin-top: 100px;
+    }
+  }
+
+  &__photo {
+    @include img-cover(2, 3);
+
+    @include up(xl) {
+      aspect-ratio: 698 / 1035;
+    }
+  }
+
+  // На 768 список — в колонке заголовка
+  &__list {
+    @include only(md) {
+      margin-left: map-get($label-col-width, md);
+    }
+  }
+}

@@ -1,0 +1,74 @@
+// «Обучение»: заголовок, фото, лид с текстом и второе фото
+.study {
+  &__title {
+    margin-top: 30px;
+  }
+
+  // Друг под другом; с 768 — фото слева, текст и второе фото справа
+  &__body {
+    display: grid;
+    gap: 40px;
+    margin-top: 40px;
+
+    @include up(md) {
+      grid-template-columns: pct(344, 728) pct(321, 728);
+      justify-content: space-between;
+      align-items: start;
+      margin-top: 80px;
+    }
+
+    @include up(lg) {
+      grid-template-columns: pct(432, 920) pct(383, 920);
+    }
+
+    // Фото — col-6, текст — с колонки offset-7
+    @include up(xl) {
+      grid-template-columns: 594px 490px;
+      margin-top: 110px;
+    }
+  }
+
+  &__photo {
+    @include img-cover(3, 4);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include up(md) {
+      gap: 60px;
+    }
+  }
+
+  &__lead {
+    @include h3;
+  }
+
+  &__lead,
+  &__text {
+    @include only(lg) {
+      max-width: 352px;
+    }
+  }
+
+  &__text {
+    @include up(xl) {
+      max-width: 386px;
+    }
+  }
+
+  &__side-photo {
+    margin-top: 10px;
+    @include img-cover(4, 3);
+
+    @include up(sm) {
+      margin-top: 20px;
+    }
+
+    @include up(md) {
+      margin-top: 0;
+    }
+  }
+}

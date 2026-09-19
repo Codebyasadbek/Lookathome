@@ -1,0 +1,68 @@
+// «Услуги»: вводный текст, широкое фото и три преимущества
+.overview {
+  &__title {
+    margin-top: 30px;
+  }
+
+  &__lead {
+    max-width: 884px;
+    margin-top: 30px;
+    @include h3;
+
+    @include up(sm) {
+      margin-top: 40px;
+    }
+  }
+
+  &__photo {
+    margin-top: 60px;
+    @include img-cover(1920, 1112);
+
+    @include up(sm) {
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      margin-top: 100px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    gap: 30px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      margin-top: 100px;
+    }
+  }
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 30px 30px 0;
+  border-bottom: 1px solid $c-line-strong;
+
+  // В ряд: заголовок сверху, текст прижат к низу
+  @include up(md) {
+    justify-content: space-between;
+    padding-bottom: 0;
+    border-right: 1px solid $c-line-strong;
+    border-bottom: 0;
+  }
+
+  &__title {
+    @include h3-static;
+  }
+}

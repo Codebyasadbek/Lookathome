@@ -1,0 +1,234 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  overflow-y: auto;
+  padding: 50px 20px;
+  background: rgba(4, 2, 1, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s $ease, visibility 0.35s;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__dialog {
+    position: relative;
+    width: 520px;
+    max-width: 100%;
+    margin: auto;
+    background: $c-bg;
+    filter: drop-shadow(0 0 17px #251207);
+    transform: translateY(20px);
+    transition: transform 0.35s $ease;
+
+    .modal.is-open & {
+      transform: none;
+    }
+
+    &--thanks {
+      padding: 60px 20px;
+      text-align: center;
+
+      @include up(sm) {
+        padding: 60px;
+      }
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: $c-white;
+
+    &::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      @include icon-mask("../img/icons/plus-light.svg");
+      transform: rotate(45deg);
+    }
+
+    .modal__dialog--thanks & {
+      color: $c-brown;
+    }
+
+    @media (min-width: 640px) {
+      top: -31px;
+      right: -29px;
+
+      .modal__dialog--thanks & {
+        top: -30px;
+        right: -30px;
+        color: $c-white;
+      }
+    }
+  }
+
+  &__img {
+    @include img-cover(520, 438);
+
+    img {
+      transform: scaleX(-1);
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    min-height: 458px;
+    padding: 10px 20px 40px;
+
+    @include up(sm) {
+      padding: 10px 40px 40px;
+    }
+  }
+
+  &__title {
+    @include h2;
+    text-align: center;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 438px;
+  }
+
+  &__submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__text {
+    max-width: 188px;
+    margin: 40px auto 0;
+    letter-spacing: 0.01em;
+  }
+
+  &__home {
+    margin-top: 40px;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100px;
+
+  &__label {
+    letter-spacing: 0.01em;
+  }
+
+  &__wrap {
+    position: relative;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    height: 61px;
+    padding: 0 25px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background: $c-taupe;
+    color: $c-brown;
+    @include font(14, 1.4);
+    letter-spacing: 0.01em;
+    transition: border-color 0.3s $ease;
+
+    &::placeholder {
+      color: $c-white;
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: $c-orange;
+    }
+  }
+
+  &__alert {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    display: none;
+  }
+
+  &.is-error {
+    .field__input {
+      padding-right: 60px;
+      border-color: $c-error;
+    }
+
+    .field__alert {
+      display: block;
+    }
+  }
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 292px;
+  color: $c-orange;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__box {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: $c-taupe;
+    transition: box-shadow 0.2s $ease, background 0.2s $ease;
+  }
+
+  input:checked + &__box {
+    background: $c-orange;
+    box-shadow: inset 0 0 0 4px $c-taupe;
+  }
+
+  input:focus-visible + &__box {
+    outline: 1px solid $c-orange;
+    outline-offset: 2px;
+  }
+
+  &.is-error &__box {
+    box-shadow: inset 0 0 0 1px $c-error;
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-position: from-font;
+  }
+}

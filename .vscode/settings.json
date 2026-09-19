@@ -1,0 +1,7 @@
+{
+  "liveSassCompile.settings.formats": [
+    { "format": "compressed", "extensionName": ".css", "savePath": "/css" }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.excludeList": ["/scss/vendor/**", "/.vscode/**"]
+}

@@ -1,0 +1,36 @@
+// Условия услуги: заголовок H3 и текст / список форматов
+.fact {
+  > * + * {
+    margin-top: 30px;
+  }
+
+  &__title {
+    @include h3-static;
+  }
+}
+
+// Форматы работы (онлайн / с выездом): в строку, в узких колонках 768–1279 — столбиком
+.modes {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+
+  @include between(md, xl) {
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    gap: 17px;
+    max-width: 167px; // текст 140px
+
+    &::before {
+      content: "";
+      flex: 0 0 10px;
+      height: 10px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: $c-orange;
+    }
+  }
+}

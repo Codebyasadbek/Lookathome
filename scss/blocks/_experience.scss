@@ -1,0 +1,72 @@
+// «Обо мне»: мой опыт — сетка карточек (текст или фото)
+.experience {
+  .section-head__title {
+    @include up(lg) {
+      max-width: 661px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    gap: 10px;
+    margin-top: 40px;
+
+    @include up(sm) {
+      margin-top: 60px;
+    }
+
+    @include up(md) {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 80px;
+    }
+
+    @include up(xl) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 100px;
+    }
+  }
+}
+
+.exp-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  aspect-ratio: 440 / 422;
+  padding: 20px;
+  background: rgba($c-soft, 0.4);
+
+  @include up(md) {
+    aspect-ratio: 1;
+    padding: 30px;
+  }
+
+  &__title {
+    font-family: $ff-head;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    @include font(20, 1.2);
+  }
+
+  &__text {
+    @include up(sm) {
+      max-width: 290px;
+    }
+
+    @include up(md) {
+      max-width: 229px;
+    }
+  }
+
+  &--photo {
+    padding: 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

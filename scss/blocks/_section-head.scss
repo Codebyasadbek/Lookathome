@@ -1,0 +1,74 @@
+// Шапка секции: подпись слева + заголовок справа (col-xl-4 / col-xl-8)
+.section-head {
+  &__label-col {
+    @each $bp, $width in $label-col-width {
+      @include up($bp) {
+        flex: 0 0 auto;
+        width: $width;
+      }
+    }
+
+    @include up(xl) {
+      width: pct(4, 12);
+    }
+  }
+
+  &__label {
+    @include label;
+
+    // В некоторых секциях макета подпись светлее
+    &--soft {
+      color: $c-soft;
+    }
+  }
+
+  &__title-col {
+    min-width: 0;
+    margin-top: 20px;
+
+    @include up(md) {
+      margin-top: 0;
+    }
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  // Кнопка: под заголовком (< 1280), под подписью в левой колонке (1280+)
+  &__btn-col {
+    margin-top: 30px;
+
+    @each $bp, $width in $label-col-width {
+      @include up($bp) {
+        width: calc(100% - #{$width});
+        margin-left: $width;
+      }
+    }
+
+    @include up(md) {
+      margin-top: 40px;
+    }
+  }
+
+  &--with-btn {
+    @include up(xl) {
+      display: grid;
+      grid-template-columns: pct(4, 12) 1fr;
+      grid-template-rows: auto 1fr;
+
+      > * {
+        width: auto;
+      }
+
+      .section-head__title-col {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+
+      .section-head__btn-col {
+        margin: 63px 0 0;
+      }
+    }
+  }
+}

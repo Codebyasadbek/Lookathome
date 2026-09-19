@@ -1,0 +1,231 @@
+@use "sass:math";
+
+// Mobile first: xs < 480 (макет 360), sm 480, md 768, lg 960, xl 1280+ (макет 1920)
+@mixin up($bp) {
+  @include media-breakpoint-up($bp) {
+    @content;
+  }
+}
+
+@mixin down($bp) {
+  @include media-breakpoint-down($bp) {
+    @content;
+  }
+}
+
+@mixin only($bp) {
+  @include media-breakpoint-only($bp) {
+    @content;
+  }
+}
+
+@mixin between($lower, $upper) {
+  @include media-breakpoint-between($lower, $upper) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Процент от ширины макета: pct(455, 920) -> 49.4565%
+@function pct($size, $base) {
+  @return math.percentage(math.div($size, $base));
+}
+
+// Отступ контейнера от края экрана (для блоков «в край» на xl)
+@function container-offset() {
+  @return max(20px, calc((100% - #{$container}) / 2));
+}
+
+// Отступ между секциями ($section-space) для одного или нескольких свойств
+@mixin section-space($props...) {
+  @each $bp, $space in $section-space {
+    @include up($bp) {
+      @each $prop in $props {
+        #{$prop}: $space;
+      }
+    }
+  }
+}
+
+// 12 колонок с гаттером $shots-gap: ширины совпадают с колонками Bootstrap
+@mixin grid-12($from: md) {
+  @include up($from) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  @each $bp, $gap in $shots-gap {
+    @include up($bp) {
+      column-gap: $gap;
+    }
+  }
+}
+
+// Размер шрифта + межстрочный интервал, округлённый до целых px (как в Figma)
+@mixin font($size, $ratio) {
+  font-size: $size * 1px;
+  line-height: math.round($size * $ratio) * 1px;
+}
+
+@mixin h1 {
+  font-family: $ff-head;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  @include font(24, 1.1);
+
+  @include up(sm) {
+    @include font(32, 1.1);
+  }
+
+  @include up(md) {
+    @include font(48, 1.1);
+  }
+
+  @include up(lg) {
+    @include font(62, 1.1);
+  }
+}
+
+@mixin h2 {
+  font-family: $ff-head;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  @include font(24, 1.2);
+
+  @include up(sm) {
+    @include font(32, 1.2);
+  }
+
+  @include up(md) {
+    @include font(37, 1.2);
+  }
+}
+
+@mixin h3 {
+  font-family: $ff-head;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  @include font(20, 1.2);
+
+  @include up(sm) {
+    @include font(24, 1.2);
+  }
+}
+
+// H4: лид страницы проекта (20 / 16 / 14)
+@mixin h4 {
+  font-family: $ff-head;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  @include font(14, 1.2);
+
+  @include up(sm) {
+    @include font(16, 1.2);
+  }
+
+  @include up(md) {
+    @include font(20, 1.2);
+  }
+}
+
+// H3 без уменьшения на мобильных (заголовки карточек)
+@mixin h3-static {
+  font-family: $ff-head;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  @include font(24, 1.2);
+}
+
+// Подпись секции: заглавными, цвет — из темы страницы
+@mixin label {
+  color: var(--label-color);
+  text-transform: uppercase;
+}
+
+@mixin txt {
+  font-family: $ff-text;
+  font-weight: 400;
+  letter-spacing: var(--txt-ls);
+  @include font(14, 1.4);
+}
+
+// Линия под ссылкой при наведении (не меняет размеры блока)
+@mixin hover-underline {
+  transition: box-shadow 0.3s $ease;
+
+  @include hover {
+    box-shadow: 0 1px 0 currentColor;
+  }
+}
+
+// Фото с заданными пропорциями
+@mixin img-cover($w, $h) {
+  aspect-ratio: #{$w} / #{$h};
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Иконка из svg-файла, цвет = currentColor
+@mixin icon-mask($url) {
+  background-color: currentColor;
+  -webkit-mask: url($url) no-repeat center / contain;
+  mask: url($url) no-repeat center / contain;
+}
+
+// Крупный полупрозрачный номер (этапы, форматы работы): 24px на мобильных
+@mixin big-num {
+  @include h1;
+  color: $c-soft;
+  opacity: 0.3;
+
+  @include up(sm) {
+    @include font(62, 1.1);
+  }
+}
+
+// Аккордеон: раскрывающаяся часть пункта $item (высоту анимирует JS)
+@mixin accordion-body($item) {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s $ease;
+
+  #{$item}.is-open & {
+    height: auto;
+  }
+}
+
+// Аккордеон: шеврон 24px в поле 32px, у открытого пункта — тёмный и перевёрнут
+@mixin accordion-icon($item) {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    color: $c-taupe;
+    @include icon-mask("../img/icons/chevron-down.svg");
+    transition: transform 0.3s $ease, color 0.3s $ease;
+
+    #{$item}.is-open & {
+      color: $c-brown;
+      transform: rotate(180deg);
+    }
+  }
+}
