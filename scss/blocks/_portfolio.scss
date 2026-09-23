@@ -79,6 +79,11 @@
 
     .swiper-wrapper {
       align-items: flex-start;
+
+      // Высота под самое большое фото: при наведении слайдер не «прыгает»
+      @include up(sm) {
+        min-height: 579px;
+      }
     }
   }
 
@@ -91,10 +96,27 @@
     @include up(sm) {
       width: 282px;
       aspect-ratio: 282 / 420;
+      transition: width 0.4s $ease, aspect-ratio 0.4s $ease;
 
       &:nth-child(6n + 4) {
         width: 386px;
         aspect-ratio: 386 / 579;
+      }
+    }
+
+    // С курсором увеличивается то фото, на которое навели
+    @media (hover: hover) and (pointer: fine) {
+      @include up(sm) {
+        .portfolio__slider:hover &:nth-child(6n + 4) {
+          width: 282px;
+          aspect-ratio: 282 / 420;
+        }
+
+        &:hover,
+        .portfolio__slider:hover &:hover {
+          width: 386px;
+          aspect-ratio: 386 / 579;
+        }
       }
     }
 
